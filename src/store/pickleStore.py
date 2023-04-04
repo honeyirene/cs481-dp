@@ -7,6 +7,9 @@ class PickleStore:
             data = pickle.load(fr)
         return data
 
+
+# 코드 돌아가는지 테스트용
 if __name__ == '__main__':
-    store = PickleStore()
-    store.load()
+    store: PickleStore = PickleStore()
+    data: any = store.load()
+    print(data.keys())
