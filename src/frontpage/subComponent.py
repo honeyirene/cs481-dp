@@ -9,8 +9,6 @@ class SubComponent:
         return html.Div(className="subContainer", children=[
             html.H1(className="test", children="test text")
         ])
-        
-
 
 # 코드 돌아가는지 테스트용
 if __name__ == '__main__':

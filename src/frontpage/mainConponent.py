@@ -10,7 +10,6 @@ class MainComponent:
         ])
         return
 
-
 # 코드 돌아가는지 테스트용
 if __name__ == '__main__':
     print('skip')
