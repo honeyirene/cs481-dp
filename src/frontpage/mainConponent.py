@@ -1,5 +1,5 @@
 from dash import Dash, html
-from frontpage.subComponent import SubComponent
+from .subComponent import SubComponent
 
 class MainComponent:
     def register(app: Dash ) -> None:

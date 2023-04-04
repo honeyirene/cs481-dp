@@ -1,11 +1,17 @@
 from dash import html
 from dash.development.base_component import Component
+from store.pickleStore import PickleStore
+from dataStructure.researchData import ResearchData
+
 
 # 예시 코드
 class SubComponent:
     # FC: Functional Component 함수형 컴포넌트.
     # 함수 호출로 html element 를 뱉어서 받아다 쓰게 구조화.
     def getFC() -> Component:
+        store: PickleStore = PickleStore()
+        data: ResearchData = store.load()
+
         return html.Div(className="subContainer", children=[
             html.H1(className="test", children="test text")
         ])

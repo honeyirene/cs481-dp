@@ -8,3 +8,6 @@
 cd src/
 python main.py
 ```
+
+## pip
+pip install dash typing numpy
