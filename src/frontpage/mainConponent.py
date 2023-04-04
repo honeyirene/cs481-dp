@@ -1,12 +1,16 @@
 from dash import Dash, html
 from .subComponent import SubComponent
+from .testGraphComponent import TestGraphComponent, TestGraphProps
 
 class MainComponent:
     def register(app: Dash ) -> None:
         sub1: html.Div = SubComponent.getFC()
 
+        testProps: TestGraphProps = TestGraphProps(0)
+        test: html.Div = TestGraphComponent.getFC(testProps)
+
         app.layout = html.Div(className="mainContainer", children=[
-            sub1,
+            sub1,test,
         ])
         return
 
