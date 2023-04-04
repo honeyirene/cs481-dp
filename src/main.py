@@ -1,10 +1,10 @@
-from store.pickleStore import PickleStore
+from dash import Dash
+from frontpage.mainConponent import MainComponent
 
-# 이쪽도 데이터 고치기
 def main() -> None:
-    store: PickleStore = PickleStore()
-    data: any = store.load()
-    print(data.keys())
+    app: Dash = Dash(__name__)
+    MainComponent.register(app)
+    app.run_server(debug=True)
     return
 
 if __name__ == '__main__':
