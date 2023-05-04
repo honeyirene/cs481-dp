@@ -6,7 +6,7 @@
 ## 실행
 ```
 cd src/
-python main.py
+python app.py
 ```
 
 ## pip
