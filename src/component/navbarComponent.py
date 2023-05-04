@@ -19,6 +19,8 @@ class NavbarComponent:
 
     def getFC(self) -> Component:
         # TODO: 예쁘게 바꾸기. 현재는 예시코드 가져다 붙인 거.
+        # https://dash-bootstrap-components.opensource.faculty.ai/docs/components/navbar/
+        # 나중에 분명 예쁘게 바꾸게 될거고, 간격같은거 style 건들면 될 것.
         links = self.__getNavLinks()
         return dbc.NavbarSimple(
             dbc.Nav(links),

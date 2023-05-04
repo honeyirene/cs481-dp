@@ -9,6 +9,11 @@ dash.register_page(
     top_nav_order=2,
 )
 
+# 퀄리티 컨트롤 페이지
+# 아래 TODO들을 layout에 들어가게 짜면 됩니다.
+# TODO: 제목 넣기.
+# TODO:
+
 layout = html.Div(
     children=[
         html.H1(children="quality control"),
