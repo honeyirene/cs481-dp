@@ -10,4 +10,4 @@ python main.py
 ```
 
 ## pip
-pip install dash typing numpy
+pip install dash typing numpy pandas
