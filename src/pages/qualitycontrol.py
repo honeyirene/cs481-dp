@@ -1,5 +1,6 @@
 import dash
 from dash import html
+from component.titleComponent import TitleComponent
 
 dash.register_page(
     __name__,
@@ -12,16 +13,14 @@ dash.register_page(
 # 퀄리티 컨트롤 페이지
 # 아래 TODO들을 layout에 들어가게 짜면 됩니다.
 # TODO: 제목 넣기.
-# TODO:
+# TODO: ....
+#
+
+title = TitleComponent().getFC("Quality Control")
 
 layout = html.Div(
     children=[
-        html.H1(children="quality control"),
-        html.Div(
-            children="""
-        quality control
-    """
-        ),
+        title,
     ]
 )
 
