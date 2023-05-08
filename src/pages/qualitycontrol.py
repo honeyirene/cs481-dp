@@ -1,7 +1,6 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
-from component.collapseComponent import CollapseComponent
 from component.titleComponent import TitleComponent
 
 dash.register_page(
