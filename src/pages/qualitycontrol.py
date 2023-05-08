@@ -1,6 +1,6 @@
 import dash
+import dash_bootstrap_components as dbc
 from dash import html
-from component.collapseComponent import CollapseComponent
 from component.titleComponent import TitleComponent
 
 dash.register_page(
@@ -18,24 +18,27 @@ dash.register_page(
 #
 
 title = TitleComponent().getFC("Quality Control")
-collapse1 = CollapseComponent().getFC(
-    app=dash.get_app(),
-    id="1",
-    title="title1",
-    children=[html.H1("Testest")],
-)
-collapse2 = CollapseComponent().getFC(
-    app=dash.get_app(),
-    id="2",
-    title="title2",
-    children=[html.H1("Testest")],
+accordion = dbc.Accordion(
+    [
+        dbc.AccordionItem(
+            [html.P("Sensor 1")],
+            title="Sensor 1",
+        ),
+        dbc.AccordionItem(
+            [html.P("Sensor 2")],
+            title="Sensor 2",
+        ),
+        dbc.AccordionItem(
+            [html.P("Sensor 3")],
+            title="Sensor 3",
+        ),
+    ]
 )
 
 layout = html.Div(
     children=[
         title,
-        collapse1,
-        collapse2,
+        accordion,
     ]
 )
 
