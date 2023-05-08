@@ -1,5 +1,6 @@
 import dash
 from dash import html
+from component.collapseComponent import CollapseComponent
 from component.titleComponent import TitleComponent
 
 dash.register_page(
@@ -17,10 +18,24 @@ dash.register_page(
 #
 
 title = TitleComponent().getFC("Quality Control")
+collapse1 = CollapseComponent().getFC(
+    app=dash.get_app(),
+    id="1",
+    title="title1",
+    children=[html.H1("Testest")],
+)
+collapse2 = CollapseComponent().getFC(
+    app=dash.get_app(),
+    id="2",
+    title="title2",
+    children=[html.H1("Testest")],
+)
 
 layout = html.Div(
     children=[
         title,
+        collapse1,
+        collapse2,
     ]
 )
 
