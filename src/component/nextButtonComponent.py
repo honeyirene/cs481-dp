@@ -4,14 +4,15 @@ from dash.development.base_component import Component
 
 
 class nextButtonComponent:
-    def __getNavLinks(self, pageName: str):
+    def __getPageLinks(self, pageName: str):
         pages = dash.page_registry.values()
         for page in pages:
+            print(page["path"])
             if page["name"] ==pageName:
                 return page["path"]
         print("wrong page name")
 
-    def getFC(self, title, pageName)-> Component:
+    def getFC(self, title, pageLink)-> Component:
         return dbc.Button(
             title,
-            href= self.__getNavLinks(pageName) )
+            href= pageLink )

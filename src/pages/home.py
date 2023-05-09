@@ -18,7 +18,7 @@ dash.register_page(
 # TODO: Image 넣기.
 # TODO: 다음 버튼 넣기.
 
-toUploadButton = nextButtonComponent().getFC("next", "Upload")
+toUploadButton = nextButtonComponent().getFC("next", "/upload")
 
 layout = html.Div(
     children=[
