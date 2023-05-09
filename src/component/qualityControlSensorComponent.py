@@ -10,7 +10,7 @@ from component.qualityControlDistributionComponent import (
 class QualityControlSensorComponent:
     def __getRow(self, info1d: List[str]) -> Component:
         component = QualityControlDistributionComponent()
-        children = [component.getFC() for info in info1d]
+        children = [component.getFC(info) for info in info1d]
 
         return html.Div(
             children,

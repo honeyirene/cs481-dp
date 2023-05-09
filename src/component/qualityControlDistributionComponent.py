@@ -35,7 +35,7 @@ class QualityControlDistributionComponent:
             fillcolor="rgba(0,0,0,0.2)",
         )
 
-    def getFC(self) -> Component:
+    def getFC(self, title: str) -> Component:
         fig = sp.make_subplots(
             rows=1,
             cols=2,
@@ -53,7 +53,7 @@ class QualityControlDistributionComponent:
             col=2,
         )
         fig.update_layout(
-            title_text="Sensor A",
+            title_text=title,
             title_x=0.5,
             height=400,
             width=350,
