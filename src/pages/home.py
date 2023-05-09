@@ -1,5 +1,6 @@
 import dash
 from dash import html
+from component.nextButtonComponent import nextButtonComponent
 
 dash.register_page(
     __name__,
@@ -16,6 +17,9 @@ dash.register_page(
 # TODO: Info 넣기
 # TODO: Image 넣기.
 # TODO: 다음 버튼 넣기.
+
+toUploadButton = nextButtonComponent().getFC("next", "Upload")
+
 layout = html.Div(
     children=[
         html.H1(children="This is our Home page"),
@@ -24,6 +28,8 @@ layout = html.Div(
         This is our Home page content.
     """
         ),
+        html.Div(toUploadButton)
+        
     ]
 )
 
