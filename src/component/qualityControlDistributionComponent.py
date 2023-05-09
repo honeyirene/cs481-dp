@@ -1,9 +1,6 @@
-import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 import plotly.subplots as sp
-import plotly.figure_factory as ff
-from dash import html, dcc
+from dash import dcc
 from dash.development.base_component import Component
 from plotly.basedatatypes import BaseTraceType
 
