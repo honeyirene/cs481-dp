@@ -1,6 +1,9 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
+from component.qualityControlDistributionComponent import (
+    QualityControlDistributionComponent,
+)
 from component.titleComponent import TitleComponent
 
 dash.register_page(
@@ -16,11 +19,12 @@ dash.register_page(
 # TODO: 제목 넣기.
 # TODO: ....
 #
+dist_graph_temp = QualityControlDistributionComponent().getFC()
 
 left = dbc.Accordion(
     [
         dbc.AccordionItem(
-            [html.P("Sensor 1")],
+            [dist_graph_temp],
             title="Sensor 1",
         ),
         dbc.AccordionItem(
