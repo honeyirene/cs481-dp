@@ -1,6 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
+from component.qualityControlSensorComponent import QualityControlSensorComponent
 from component.titleComponent import TitleComponent
 
 dash.register_page(
@@ -11,30 +12,37 @@ dash.register_page(
     top_nav_order=2,
 )
 
-# 퀄리티 컨트롤 페이지
-# 아래 TODO들을 layout에 들어가게 짜면 됩니다.
-# TODO: 제목 넣기.
-# TODO: ....
-#
-
 left = dbc.Accordion(
     [
         dbc.AccordionItem(
-            [html.P("Sensor 1")],
-            title="Sensor 1",
+            QualityControlSensorComponent().getFC(
+                [
+                    ["3-axis acceleration", "BVP (PPG)", "EDA"],
+                    ["Heart rate (from BVP)", "IBI (from BVP)", "Body temperature"],
+                ]
+            ),
+            title="Empatica E4 Wristband",
         ),
         dbc.AccordionItem(
-            [html.P("Sensor 2")],
-            title="Sensor 2",
+            QualityControlSensorComponent().getFC(
+                [
+                    ["Brainwave (fp1 channel EEG)", "Attention & Meditation"],
+                ]
+            ),
+            title="NeuroSky MindWave Headset",
         ),
         dbc.AccordionItem(
-            [html.P("Sensor 3")],
-            title="Sensor 3",
+            QualityControlSensorComponent().getFC(
+                [
+                    ["HR (ECG)", "Audio"],
+                ]
+            ),
+            title="Other Measurement",
         ),
     ],
     style={
-        "width": "55%",
-        "margin-right": "5%",
+        "width": "60%",
+        "margin-right": "1%",
     },
 )
 right = dbc.Card(
