@@ -24,7 +24,14 @@ dist_graph_temp = QualityControlDistributionComponent().getFC()
 left = dbc.Accordion(
     [
         dbc.AccordionItem(
-            [dist_graph_temp],
+            html.Div(
+                [dist_graph_temp, dist_graph_temp, dist_graph_temp],
+                style={
+                    "padding": 0,
+                    "display": "flex",
+                    "justify-content": "center",
+                },
+            ),
             title="Sensor 1",
         ),
         dbc.AccordionItem(
@@ -37,8 +44,8 @@ left = dbc.Accordion(
         ),
     ],
     style={
-        "width": "55%",
-        "margin-right": "5%",
+        "width": "60%",
+        "margin-right": "1%",
     },
 )
 right = dbc.Card(

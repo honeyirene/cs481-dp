@@ -38,7 +38,12 @@ class QualityControlDistributionComponent:
         )
 
     def getFC(self) -> Component:
-        fig = sp.make_subplots(rows=1, cols=2, horizontal_spacing=0)
+        fig = sp.make_subplots(
+            rows=1,
+            cols=2,
+            horizontal_spacing=0,
+            subplot_titles=("Scatter", "Distribution"),
+        )
         fig.add_trace(
             self.__getStrip(),
             row=1,
@@ -49,10 +54,18 @@ class QualityControlDistributionComponent:
             row=1,
             col=2,
         )
-        fig.update_layout(showlegend=False)
+        fig.update_layout(
+            title_text="Sensor A",
+            title_x=0.5,
+            height=400,
+            width=350,
+            margin=dict(l=30, r=30, b=0, t=80),
+            showlegend=False,
+        )
+        fig.update_xaxes(visible=False)
         fig.update_yaxes(showgrid=False, row=1, col=1)
         fig.update_yaxes(visible=False, row=1, col=2)
-        return dcc.Graph(id="asdf", figure=fig)
+        return dcc.Graph(id="asdf", figure=fig, style=dict())
 
 
 # 코드 돌아가는지 테스트용
