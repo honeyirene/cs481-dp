@@ -1,8 +1,9 @@
 import dash
 import datetime
+import dash_bootstrap_components as dbc
 
 from dash.dependencies import Input, Output, State
-from dash import dcc, html, Dash
+from dash import dcc, html, callback, Input, Output
 
 dash.register_page(
     __name__,
@@ -26,9 +27,6 @@ dash.register_page(
 #    - https://dash.plotly.com/dash-core-components/store
 #    - https://dash.plotly.com/sharing-data-between-callbacks
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 layout = html.Div(
     children=[
@@ -39,27 +37,25 @@ layout = html.Div(
                 """
         ),
         dcc.Upload(
-        id='upload-data',
-        children=html.Div([
-            'Drag and Drop or ',
-            html.A('Select Files')
-        ]),
-        style={
-            'width': '100%',
-            'height': '60px',
-            'lineHeight': '60px',
-            'borderWidth': '1px',
-            'borderStyle': 'dashed',
-            'borderRadius': '5px',
-            'textAlign': 'center',
-            'margin': '10px'
-        },
-        # Allow multiple files to be uploaded
-        multiple=True
-    ),
-    html.Div(id='output-data-upload'),
-
-        
+            id='upload',
+            children=html.Div([
+                'Drag and Drop or ',
+                html.A('Select Files')
+            ]),
+            style={
+                'width': '100%',
+                'height': '60px',
+                'lineHeight': '60px',
+                'borderWidth': '1px',
+                'borderStyle': 'dashed',
+                'borderRadius': '5px',
+                'textAlign': 'center',
+                'margin': '10px'
+            },
+            # Allow multiple files to be uploaded
+            multiple=True
+        ),
+        html.Div(id='output'),
     ]
 )
 
@@ -79,10 +75,10 @@ def parse_contents(contents, filename, date):
             'wordBreak': 'break-all'
         })
     ])
-@app.callback(Output('output-image-upload', 'children'),
-              Input('upload-image', 'contents'),
-              State('upload-image', 'filename'),
-              State('upload-image', 'last_modified'))
+@callback(Output('output', 'children'),
+              Input('upload', 'contents'),
+              State('upload', 'filename'),
+              State('upload', 'last_modified'))
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
         children = [
