@@ -1,3 +1,8 @@
+#########################################
+### <view page>
+### mainly managed by Minhyeok Seo.
+#########################################
+
 import dash
 import datetime
 import dash_bootstrap_components as dbc

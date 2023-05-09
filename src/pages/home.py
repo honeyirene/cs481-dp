@@ -1,3 +1,8 @@
+#########################################
+### <view page>
+### mainly managed by Minhyeok Seo.
+#########################################
+
 import dash
 from dash import html
 

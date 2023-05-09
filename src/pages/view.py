@@ -1,4 +1,7 @@
-#view page. mainly managed by SaeYeon Na.
+#########################################
+### <view page>
+### mainly managed by SaeYeon Na.
+#########################################
 
 import dash
 from dash import html

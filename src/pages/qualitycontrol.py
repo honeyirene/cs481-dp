@@ -1,3 +1,8 @@
+#########################################
+### <view page>
+### mainly managed by DaeHeon Han.
+#########################################
+
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
