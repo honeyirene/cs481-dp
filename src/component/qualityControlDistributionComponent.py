@@ -5,7 +5,7 @@ from dash.development.base_component import Component
 from plotly.basedatatypes import BaseTraceType
 
 
-# 공용으로 쓸 타이틀 코드. 예쁘게 만드는 건 나중에.
+# QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 class QualityControlDistributionComponent:
     datay = [1, 2, 3.1, 3.2, 3.3, 3.7, 3.9, 3.9, 4.1, 4.2, 5, 6.0, 6.1, 7, 8, 9, 10]
     datax = ["x1"] * len(datay)
@@ -23,6 +23,7 @@ class QualityControlDistributionComponent:
             marker=dict(color="rgba(255,0,0,0.5)"),
             x0=" ",
             y0=" ",
+            jitter=1,
         )
 
     def __getViolin(self) -> BaseTraceType:

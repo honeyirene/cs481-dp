@@ -1,9 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import html
-from component.qualityControlDistributionComponent import (
-    QualityControlDistributionComponent,
-)
+from component.qualityControlSensorComponent import QualityControlSensorComponent
 from component.titleComponent import TitleComponent
 
 dash.register_page(
@@ -14,23 +12,11 @@ dash.register_page(
     top_nav_order=2,
 )
 
-# 퀄리티 컨트롤 페이지
-# 아래 TODO들을 layout에 들어가게 짜면 됩니다.
-# TODO: 제목 넣기.
-# TODO: ....
-#
-dist_graph_temp = QualityControlDistributionComponent().getFC()
-
 left = dbc.Accordion(
     [
         dbc.AccordionItem(
-            html.Div(
-                [dist_graph_temp, dist_graph_temp, dist_graph_temp],
-                style={
-                    "padding": 0,
-                    "display": "flex",
-                    "justify-content": "center",
-                },
+            QualityControlSensorComponent().getFC(
+                [["Value A", "Value B"], ["Value C"]]
             ),
             title="Sensor 1",
         ),
