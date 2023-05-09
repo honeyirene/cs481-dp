@@ -1,5 +1,9 @@
 import dash
-from dash import html
+import datetime
+import dash_bootstrap_components as dbc
+
+from dash.dependencies import Input, Output, State
+from dash import dcc, html, callback, Input, Output
 
 dash.register_page(
     __name__,
@@ -23,16 +27,65 @@ dash.register_page(
 #    - https://dash.plotly.com/dash-core-components/store
 #    - https://dash.plotly.com/sharing-data-between-callbacks
 
+
 layout = html.Div(
     children=[
         html.H1(children="This is our Home page"),
         html.Div(
             children="""
-        This is our Home page content.
-    """
+                This is our Home page content.
+                """
         ),
+        dcc.Upload(
+            id='upload',
+            children=html.Div([
+                'Drag and Drop or ',
+                html.A('Select Files')
+            ]),
+            style={
+                'width': '100%',
+                'height': '60px',
+                'lineHeight': '60px',
+                'borderWidth': '1px',
+                'borderStyle': 'dashed',
+                'borderRadius': '5px',
+                'textAlign': 'center',
+                'margin': '10px'
+            },
+            # Allow multiple files to be uploaded
+            multiple=True
+        ),
+        html.Div(id='output'),
     ]
 )
+
+
+def parse_contents(contents, filename, date):
+    return html.Div([
+        html.H5(filename),
+        html.H6(datetime.datetime.fromtimestamp(date)),
+
+        # HTML images accept base64 encoded strings in the same format
+        # that is supplied by the uploadSS
+        html.Img(src=contents),
+        html.Hr(),
+        html.Div('Raw Content'),
+        html.Pre(contents[0:200] + '...', style={
+            'whiteSpace': 'pre-wrap',
+            'wordBreak': 'break-all'
+        })
+    ])
+@callback(Output('output', 'children'),
+              Input('upload', 'contents'),
+              State('upload', 'filename'),
+              State('upload', 'last_modified'))
+def update_output(list_of_contents, list_of_names, list_of_dates):
+    if list_of_contents is not None:
+        children = [
+            parse_contents(c, n, d) for c, n, d in
+            zip(list_of_contents, list_of_names, list_of_dates)]
+        return children
+
 
 # 코드 돌아가는지 테스트용
 if __name__ == "__main__":
