@@ -16,17 +16,28 @@ left = dbc.Accordion(
     [
         dbc.AccordionItem(
             QualityControlSensorComponent().getFC(
-                [["Value A", "Value B"], ["Value C"]]
+                [
+                    ["3-axis acceleration", "BVP (PPG)", "EDA"],
+                    ["Heart rate (from BVP)", "IBI (from BVP)", "Body temperature"],
+                ]
             ),
-            title="Sensor 1",
+            title="Empatica E4 Wristband",
         ),
         dbc.AccordionItem(
-            [html.P("Sensor 2")],
-            title="Sensor 2",
+            QualityControlSensorComponent().getFC(
+                [
+                    ["Brainwave (fp1 channel EEG)", "Attention & Meditation"],
+                ]
+            ),
+            title="NeuroSky MindWave Headset",
         ),
         dbc.AccordionItem(
-            [html.P("Sensor 3")],
-            title="Sensor 3",
+            QualityControlSensorComponent().getFC(
+                [
+                    ["HR (ECG)", "Audio"],
+                ]
+            ),
+            title="Other Measurement",
         ),
     ],
     style={
