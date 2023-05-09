@@ -1,4 +1,8 @@
+import pandas as pd
+import plotly.express as px
 import plotly.graph_objects as go
+import plotly.subplots as sp
+import plotly.figure_factory as ff
 from dash import html, dcc
 from dash.development.base_component import Component
 
@@ -9,8 +13,30 @@ class QualityControlDistributionComponent:
     datax = ["x1"] * len(datay)
 
     def getFC(self) -> Component:
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=self.datax, y=self.datay, mode="markers"))
+        fig = sp.make_subplots(rows=1, cols=2, horizontal_spacing=0)
+        fig.add_trace(
+            go.Box(
+                x=self.datax,
+                y=self.datay,
+                boxpoints="all",
+                pointpos=0,
+                hoveron="points",
+                fillcolor="rgba(255,255,255,0)",
+                line={"color": "rgba(255,255,255,0)"},
+                marker=dict(color="rgb(0,0,0)"),
+                x0=" ",
+                y0=" ",
+            ),
+            row=1,
+            col=1,
+        )
+        fig.add_trace(
+            go.Violin(x=self.datax, y=self.datay, side="positive"),
+            row=1,
+            col=2,
+        )
+        fig.update_yaxes(showgrid=False, row=1, col=1)
+        fig.update_yaxes(visible=False, row=1, col=2)
         return dcc.Graph(id="asdf", figure=fig)
 
 
