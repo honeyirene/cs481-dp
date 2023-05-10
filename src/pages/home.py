@@ -5,6 +5,7 @@
 
 import dash
 from dash import html
+from component.nextButtonComponent import nextButtonComponent
 
 dash.register_page(
     __name__,
@@ -21,6 +22,9 @@ dash.register_page(
 # TODO: Info 넣기
 # TODO: Image 넣기.
 # TODO: 다음 버튼 넣기.
+
+toUploadButton = nextButtonComponent().getFC("next", "/upload")
+
 layout = html.Div(
     children=[
         html.H1(children=html.B("EmoViz")),
@@ -53,6 +57,8 @@ layout = html.Div(
                 html.Ul(html.Li(html.A("K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations", href="https://www.nature.com/articles/s41597-020-00630-y")))
             ],
         ),
+        html.Div(toUploadButton)
+        
     ]
 )
 
