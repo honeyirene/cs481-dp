@@ -23,11 +23,35 @@ dash.register_page(
 # TODO: 다음 버튼 넣기.
 layout = html.Div(
     children=[
-        html.H1(children="This is our Home page"),
+        html.H1(children=html.B("EmoViz")),
+        html.Div(html.Br()),
+        html.Br(),
         html.Div(
-            children="""
-        This is our Home page content.
-    """
+            children=[
+                html.H2("Purpose"),
+                html.Br(),
+                html.H5("Tracking your K-emocon Data with our tool."),
+                html.H5("We provide simple views and quality controls for catching trend of multi-modal data."),
+                html.Br(),
+                html.Br(),
+            ],
+        ),
+        html.Div(
+            children=[
+                html.H2("Caution"),
+                html.Br(),
+                html.H5("This tool is based on K-emocon dataset."),
+                html.H5("So, you must keep data format."),
+                html.H5("Please refer to the thesis in the reference section below."),
+                html.Br(),
+                html.Br(),
+            ],
+        ),html.Div(
+            children=[
+                html.H2("Purpose"),
+                html.Br(),
+                html.Ul(html.Li(html.A("K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations", href="https://www.nature.com/articles/s41597-020-00630-y")))
+            ],
         ),
     ]
 )
