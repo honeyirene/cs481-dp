@@ -8,6 +8,8 @@ import dash_bootstrap_components as dbc
 from dash import html
 from component.qualityControlSensorComponent import QualityControlSensorComponent
 from component.titleComponent import TitleComponent
+from component.nextButtonComponent import nextButtonComponent
+
 
 dash.register_page(
     __name__,
@@ -16,6 +18,9 @@ dash.register_page(
     top_nav=True,
     top_nav_order=2,
 )
+
+toViewButton = nextButtonComponent().getFC("next", "/view")
+
 
 left = dbc.Accordion(
     [
@@ -71,6 +76,7 @@ layout = html.Div(
     children=[
         title,
         middle,
+        toViewButton,
     ]
 )
 

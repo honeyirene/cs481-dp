@@ -1,6 +1,6 @@
 #########################################
 ### <view page>
-### mainly managed by Minhyeok Seo.
+### mainly managed by Minhyug Seo.
 #########################################
 
 import dash
@@ -9,6 +9,8 @@ import dash_bootstrap_components as dbc
 
 from dash.dependencies import Input, Output, State
 from dash import dcc, html, callback, Input, Output
+from component.titleComponent import TitleComponent
+from component.nextButtonComponent import nextButtonComponent
 
 dash.register_page(
     __name__,
@@ -32,6 +34,7 @@ dash.register_page(
 #    - https://dash.plotly.com/dash-core-components/store
 #    - https://dash.plotly.com/sharing-data-between-callbacks
 
+toQualityButton = nextButtonComponent().getFC("next", "/quality_control")
 
 layout = html.Div(
     children=[
@@ -61,6 +64,7 @@ layout = html.Div(
             multiple=True
         ),
         html.Div(id='output'),
+        toQualityButton
     ]
 )
 
