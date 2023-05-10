@@ -21,7 +21,7 @@ dash.register_page(
 # 데이터 업로드 페이지!
 # 아래 TODO들을 layout에 들어가게 짜면 됩니다.
 # TODO: 제목 넣기.
-# TODO: drag and drop 구현하기.
+# TODO: drag and drop 구현하기. - complete
 # TODO: 그에 맞는 UI 구성.
 # TODO: 데이터 받아서 사람별로 구별하는거 구현하기.
 # 여기 작업은 어느정도 진행하면서 고민 할 부분이 많을거같아요.
@@ -73,12 +73,7 @@ def parse_contents(contents, filename, date):
         # HTML images accept base64 encoded strings in the same format
         # that is supplied by the uploadSS
         html.Img(src=contents),
-        html.Hr(),
-        html.Div('Raw Content'),
-        html.Pre(contents[0:200] + '...', style={
-            'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all'
-        })
+        html.H6("Upload Complete")
     ])
 @callback(Output('output', 'children'),
               Input('upload', 'contents'),
