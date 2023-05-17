@@ -1,8 +1,3 @@
-#########################################
-### <view page>
-### mainly managed by SaeYeon Na.
-#########################################
-
 import dash
 from dash import html
 import dash_bootstrap_components as dbc
@@ -13,9 +8,6 @@ from component.viewGraphComponent import ViewGraphComponent
 from models.graphDataModel import GraphPlotDataModel, GraphTraceDataModel
 
 # from dash_draggable import Draggable
-
-
-app = dash.get_app()
 
 dash.register_page(
     __name__,
@@ -62,19 +54,16 @@ data_audio = random_timeseries(0.01, 4, 600)
 ###########################################################
 ########### create line plot with the data ##################
 # fig = make_subplots(rows=2, cols=1)
-fig_acc = go.Figure()
-fig_acc.add_trace(go.Scatter(y=data_x, mode="lines", name="x axis"))
-fig_acc.add_trace(go.Scatter(y=data_y, mode="lines", name="y axis"))
-fig_acc.add_trace(go.Scatter(y=data_z, mode="lines", name="z axis"))
-fig_acc.update_layout(
-    yaxis_title="g", margin=dict(l=1, r=1, t=1, b=1), height=100, legend_font_size=20
+
+traceData_acc_x = GraphTraceDataModel("x axis", data_x)
+traceData_acc_y = GraphTraceDataModel("y axis", data_y)
+traceData_acc_z = GraphTraceDataModel("z axis", data_z)
+plotData_acc = GraphPlotDataModel(
+    "g", [traceData_acc_x, traceData_acc_y, traceData_acc_z]
 )
 
-fig_bvp = go.Figure()
-fig_bvp.add_trace(go.Scatter(y=data_bvp, mode="lines", name="BVP", showlegend=True))
-fig_bvp.update_layout(
-    yaxis_title="PPG", margin=dict(l=1, r=1, t=1, b=1), height=100, legend_font_size=30
-)
+traceData_bvp = GraphTraceDataModel("BVP", data_bvp)
+plotData_bvp = GraphPlotDataModel("PPG", [traceData_bvp])
 
 fig_eda = go.Figure()
 fig_eda.add_trace(go.Scatter(y=data_eda, mode="lines", name="EDA", showlegend=True))
@@ -352,14 +341,6 @@ emotion_label_am = [
         layer="below",
     ),
 ]
-fig_acc.update_layout(shapes=emotion_label)
-fig_acc.update_layout(
-    {"plot_bgcolor": "rgba(0,0,0,0)", "paper_bgcolor": "rgba(0,0,0,0)"}
-)
-fig_bvp.update_layout(shapes=emotion_label)
-fig_bvp.update_layout(
-    {"plot_bgcolor": "rgba(0,0,0,0)", "paper_bgcolor": "rgba(0,0,0,0)"}
-)
 fig_eda.update_layout(shapes=emotion_label)
 fig_eda.update_layout(
     {"plot_bgcolor": "rgba(0,0,0,0)", "paper_bgcolor": "rgba(0,0,0,0)"}
@@ -401,14 +382,12 @@ colors = {
 }
 ##################################################
 
-######### new graph #########
-traceData_x = GraphTraceDataModel("x axis", data_x)
-traceData_y = GraphTraceDataModel("y axis", data_y)
-traceData_z = GraphTraceDataModel("z axis", data_z)
-plotData_acc = GraphPlotDataModel("g", [traceData_x])
-
-
-newGraph = ViewGraphComponent().getFC([plotData_acc])
+newGraph = ViewGraphComponent().getFC(
+    [
+        plotData_acc,
+        plotData_bvp,
+    ]
+)
 
 layout = html.Div(
     children=[
@@ -483,16 +462,6 @@ layout = html.Div(
                 dbc.Accordion(
                     [
                         dbc.AccordionItem(
-                            dcc.Graph(figure=fig_acc, id="acc"),
-                            title="3-axis Acceleration",
-                            item_id="acc",
-                        ),
-                        dbc.AccordionItem(
-                            dcc.Graph(figure=fig_bvp, id="bvp"),
-                            title="BVP",
-                            item_id="bvp",
-                        ),
-                        dbc.AccordionItem(
                             dcc.Graph(figure=fig_eda, id="eda"),
                             title="EDA",
                             item_id="eda",
@@ -530,8 +499,6 @@ layout = html.Div(
                     ],
                     always_open=True,
                     active_item=[
-                        "acc",
-                        "bvp",
                         "eda",
                         "hr",
                         "ibi",
