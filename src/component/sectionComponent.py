@@ -6,9 +6,9 @@ from dash import dcc, html, callback, Input, Output
 class SectionComponent:
     section = html.Div()
     isVideoZoom = True
-    changePortionButton = html.Button('change', id = 'input')
+    changePortionButton = html.Button('change', id = 'input', n_clicks=0)
     def getFC(self, leftChildren, rightChildren) -> Component:
-        left =dbc.Card(id="leftChildren",
+        left =html.Div(id="leftChildren",
             children=leftChildren,
             style={
                 "width": "45%",
@@ -16,7 +16,7 @@ class SectionComponent:
             }
         )
 
-        right = dbc.Card(id="rightChildren",
+        right = html.Div(id="rightChildren",
             children=rightChildren,
             style={
                 "width": "45%",
@@ -42,6 +42,11 @@ class SectionComponent:
         Output("rightChildren", "style"),
         Input("input", 'n_clicks'))
     def changePortion(n_clicks):
-        leftStyle = {"width" : "25%"},
-        rightStyle = {"width" : " 70%"}
+        if((n_clicks) % 2 ==0):
+            leftStyle = {"width" : "35%", "margin-right": "1%"}
+            rightStyle = {"width" : " 60%"}
+        else:
+            leftStyle = {"width" : "45%", "margin-right": "1%"}
+            rightStyle = {"width" : " 45%"}
+        
         return leftStyle, rightStyle
