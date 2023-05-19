@@ -6,6 +6,8 @@
 import dash
 from dash import html
 from component.nextButtonComponent import nextButtonComponent
+from component.titleComponent import TitleComponent
+import dash_bootstrap_components as dbc
 
 dash.register_page(
     __name__,
@@ -25,11 +27,10 @@ dash.register_page(
 
 toUploadButton = nextButtonComponent().getFC("next", "/upload")
 
-layout = html.Div(
-    children=[
-        html.H1(children=html.B("EmoViz")),
-        html.Div(html.Br()),
-        html.Br(),
+title = TitleComponent().getFC("EmoViz")
+
+left = html.Div([
+    dbc.Col([
         html.Div(
             children=[
                 html.H2("Purpose"),
@@ -38,8 +39,18 @@ layout = html.Div(
                 html.H5("We provide simple views and quality controls for catching trend of multi-modal data."),
                 html.Br(),
                 html.Br(),
-            ],
-        ),
+                ],
+            )
+        ])
+    ],
+    style={
+        "width": "60%",
+        "margin-right": "1%",
+    },
+)
+
+right = html.Div([
+    dbc.Col([
         html.Div(
             children=[
                 html.H2("Caution"),
@@ -49,8 +60,31 @@ layout = html.Div(
                 html.H5("Please refer to the thesis in the reference section below."),
                 html.Br(),
                 html.Br(),
-            ],
-        ),html.Div(
+                html.Br(),
+
+                ],
+            ),
+        ])
+    ], 
+    style={
+        "width": "35%",
+    }
+)
+
+middle = html.Div(
+    children=[left,right],
+    style={
+        "display": "flex",
+        "margin-top": "30px",
+    },
+)
+
+
+layout = html.Div(
+    children=[
+        title,
+        middle,
+        html.Div(
             children=[
                 html.H2("Purpose"),
                 html.Br(),
