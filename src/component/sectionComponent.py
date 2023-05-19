@@ -5,9 +5,10 @@ from dash import html, callback, Output
 
 class SectionComponent:
     section = html.Div()
-    
+    isVideoZoom = True
+    changePortionButton = html.Button('change', id = 'input')
     def getFC(self, leftChildren, rightChildren) -> Component:
-        left =html.Div(id="leftChildren",
+        left =dbc.Card(id="leftChildren",
             children=leftChildren,
             style={
                 "width": "45%",
@@ -15,20 +16,26 @@ class SectionComponent:
             }
         )
 
-        right = html.Div(id="rightChildren",
-            children=leftChildren,
+        right = dbc.Card(id="rightChildren",
+            children=rightChildren,
             style={
                 "width": "45%",
             }
         )
         
-        middle = html.Div(
-            children=[left,right],
-            style={
-                "display": "flex",
-            },
-        )
+        middle = html.Div([
+            html.Div(
+                children=[left,right],
+                style={
+                    "display": "flex",
+                },
+            ),
+            self.changePortionButton,
+        ])
 
         self.section = middle
 
         return self.section
+
+#    @app.callback(input())
+#    def changePortion():

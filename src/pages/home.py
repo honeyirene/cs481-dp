@@ -44,10 +44,6 @@ left = html.Div([
             )
         ])
     ],
-    style={
-        "width": "60%",
-        "margin-right": "1%",
-    },
 )
 
 right = html.Div([
@@ -62,14 +58,10 @@ right = html.Div([
                 html.Br(),
                 html.Br(),
                 html.Br(),
-
                 ],
             ),
         ])
     ], 
-    style={
-        "width": "35%",
-    }
 )
 
 middle = SectionComponent().getFC( left, right)
