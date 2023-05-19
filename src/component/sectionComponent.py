@@ -1,7 +1,7 @@
 from dash import html
 from dash.development.base_component import Component
 import dash_bootstrap_components as dbc
-from dash import html, callback, Output
+from dash import dcc, html, callback, Input, Output
 
 class SectionComponent:
     section = html.Div()
@@ -37,5 +37,11 @@ class SectionComponent:
 
         return self.section
 
-#    @app.callback(input())
-#    def changePortion():
+    @callback(
+        Output("leftChildren", "style"),
+        Output("rightChildren", "style"),
+        Input("input", 'n_clicks'))
+    def changePortion(n_clicks):
+        leftStyle = {"width" : "25%"},
+        rightStyle = {"width" : " 70%"}
+        return leftStyle, rightStyle
