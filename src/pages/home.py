@@ -7,6 +7,7 @@ import dash
 from dash import html
 from component.nextButtonComponent import nextButtonComponent
 from component.titleComponent import TitleComponent
+from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
 
 dash.register_page(
@@ -71,13 +72,7 @@ right = html.Div([
     }
 )
 
-middle = html.Div(
-    children=[left,right],
-    style={
-        "display": "flex",
-        "margin-top": "30px",
-    },
-)
+middle = SectionComponent().getFC( left, right)
 
 
 layout = html.Div(
