@@ -20,8 +20,10 @@ class ViewGraphComponent:
             trace = ViewSubGraphTrace(self.fig, row=idx + 1, col=1)
             trace.update(plotData)
 
-        self.fig["layout"]["legend_tracegroupgap"] = 100
+        self.fig.update_layout({"height": len(plotDatas) * 100 + 400})
+
         # 그래프 크기 조절하면서 legend 간격을 조절해야 할텐데, 사이에 아무것도 없는 그룹 끼워넣기...?
+        self.fig["layout"]["legend_tracegroupgap"] = 80
 
         return dcc.Graph(id="asdf", figure=self.fig, style=dict())
 

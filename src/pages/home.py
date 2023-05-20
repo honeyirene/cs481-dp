@@ -82,7 +82,8 @@ layout = html.Div(
     children=[
         title,
         mainContainer,
-    ]
+    ],
+    style={"height": "80vh"},
 )
 
 # 코드 돌아가는지 테스트용

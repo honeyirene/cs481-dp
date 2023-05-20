@@ -35,7 +35,11 @@ class SectionComponent:
                 middle,
                 right,
             ],
-            style={"display": "flex"},
+            style={
+                "height": "100%",
+                "overflow": "hidden",
+                "display": "flex",
+            },
         )
 
     def getFC(
@@ -52,7 +56,8 @@ class SectionComponent:
                     leftLowerChildren,
                     rightChildren,
                 ),
-            ]
+            ],
+            style={"height": "100%", "overflow": "hidden"},
         )
 
     @callback(
@@ -70,7 +75,9 @@ class SectionComponent:
             }
             rightStyle = {
                 "width": "64%",
+                "height": "100%",
                 "border": "1px solid cyan",
+                "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "300px",
@@ -85,7 +92,9 @@ class SectionComponent:
             }
             rightStyle = {
                 "width": "49.5%",
+                "height": "90%",
                 "border": "1px solid cyan",
+                "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "500px",
