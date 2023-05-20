@@ -19,7 +19,12 @@ class ViewSubGraphTrace:
     def update(self, plotData: GraphPlotDataModel) -> None:
         for traceData in plotData.traces:
             self.__addTrace(
-                go.Scatter(y=traceData.y, name=traceData.name, mode="lines")
+                go.Scatter(
+                    y=traceData.y,
+                    name=traceData.name,
+                    mode="lines",
+                    legendgroup=f"{self.row}",
+                )
             )
         self.__updateLayout(plotData.title)
 

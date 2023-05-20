@@ -65,11 +65,8 @@ plotData_acc = GraphPlotDataModel(
 traceData_bvp = GraphTraceDataModel("BVP", data_bvp)
 plotData_bvp = GraphPlotDataModel("PPG", [traceData_bvp])
 
-fig_eda = go.Figure()
-fig_eda.add_trace(go.Scatter(y=data_eda, mode="lines", name="EDA", showlegend=True))
-fig_eda.update_layout(
-    yaxis_title="uS", margin=dict(l=1, r=1, t=1, b=1), height=100, legend_font_size=30
-)
+traceData_eda = GraphTraceDataModel("EDA", data_eda)
+plotData_eda = GraphPlotDataModel("uS", [traceData_eda])
 
 fig_hr = go.Figure()
 fig_hr.add_trace(go.Scatter(y=data_hr_e4, mode="lines", name="E4"))
@@ -341,10 +338,6 @@ emotion_label_am = [
         layer="below",
     ),
 ]
-fig_eda.update_layout(shapes=emotion_label)
-fig_eda.update_layout(
-    {"plot_bgcolor": "rgba(0,0,0,0)", "paper_bgcolor": "rgba(0,0,0,0)"}
-)
 fig_hr.update_layout(shapes=emotion_label)
 fig_hr.update_layout(
     {"plot_bgcolor": "rgba(0,0,0,0)", "paper_bgcolor": "rgba(0,0,0,0)"}
@@ -386,6 +379,7 @@ newGraph = ViewGraphComponent().getFC(
     [
         plotData_acc,
         plotData_bvp,
+        plotData_eda,
     ]
 )
 
@@ -462,11 +456,6 @@ layout = html.Div(
                 dbc.Accordion(
                     [
                         dbc.AccordionItem(
-                            dcc.Graph(figure=fig_eda, id="eda"),
-                            title="EDA",
-                            item_id="eda",
-                        ),
-                        dbc.AccordionItem(
                             dcc.Graph(figure=fig_hr, id="hr"),
                             title="Heart Rates",
                             item_id="hr",
@@ -499,7 +488,6 @@ layout = html.Div(
                     ],
                     always_open=True,
                     active_item=[
-                        "eda",
                         "hr",
                         "ibi",
                         "temp",
