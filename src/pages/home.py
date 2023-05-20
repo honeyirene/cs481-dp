@@ -74,12 +74,12 @@ right = html.Div(
     ],
 )
 
-middle = SectionComponent().getFC(left, right)
+mainContainer = SectionComponent().getFC(left, right)
 
 layout = html.Div(
     children=[
         title,
-        middle,
+        mainContainer,
         html.Div(
             children=[
                 html.H2("Purpose"),

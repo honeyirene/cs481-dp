@@ -5,29 +5,39 @@ from dash import dcc, html, callback, Input, Output
 
 
 class SectionComponent:
-    section = html.Div()
     isVideoZoom = True
     changePortionButton = html.Button("change", id="input", n_clicks=0)
 
     def getFC(self, leftChildren, rightChildren) -> Component:
         left = html.Div(
-            id="leftChildren",
+            id="left-panel",
             children=leftChildren,
-            style={"width": "45%", "margin-right": "1%"},
-        )
-
-        right = html.Div(
-            id="rightChildren",
-            children=rightChildren,
             style={
                 "width": "45%",
+                "margin-right": "1%",
+                "border": "1px solid cyan",
             },
         )
 
-        middle = html.Div(
+        middle = html.Div(id="middle-gap", style={"width": "1%"})
+
+        right = html.Div(
+            id="right-panel",
+            children=rightChildren,
+            style={
+                "width": "45%",
+                "border": "1px solid cyan",
+            },
+        )
+
+        return html.Div(
             [
                 html.Div(
-                    children=[left, right],
+                    children=[
+                        left,
+                        middle,
+                        right,
+                    ],
                     style={
                         "display": "flex",
                     },
@@ -36,21 +46,29 @@ class SectionComponent:
             ]
         )
 
-        self.section = middle
-
-        return self.section
-
     @callback(
-        Output("leftChildren", "style"),
-        Output("rightChildren", "style"),
+        Output("left-panel", "style"),
+        Output("right-panel", "style"),
         Input("input", "n_clicks"),
     )
     def changePortion(n_clicks):
         if (n_clicks) % 2 == 0:
-            leftStyle = {"width": "35%", "margin-right": "1%"}
-            rightStyle = {"width": " 60%"}
+            leftStyle = {
+                "width": "35%",
+                "border": "1px solid cyan",
+            }
+            rightStyle = {
+                "width": " 65%",
+                "border": "1px solid cyan",
+            }
         else:
-            leftStyle = {"width": "45%", "margin-right": "1%"}
-            rightStyle = {"width": " 45%"}
+            leftStyle = {
+                "width": "50%",
+                "border": "1px solid cyan",
+            }
+            rightStyle = {
+                "width": " 50%",
+                "border": "1px solid cyan",
+            }
 
         return leftStyle, rightStyle
