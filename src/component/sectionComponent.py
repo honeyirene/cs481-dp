@@ -8,42 +8,33 @@ class SectionComponent:
     isVideoZoom = True
     changePortionButton = html.Button("change", id="input", n_clicks=0)
 
-    def getFC(self, leftChildren, rightChildren) -> Component:
+    def getFC(
+        self,
+        leftUpperChildren: Component,
+        leftLowerChildren: Component,
+        rightChildren: Component,
+    ) -> Component:
+        leftUpper = html.Div(id="left-upper-panel", children=leftUpperChildren)
+        leftLower = html.Div(id="left-lower-panel", children=leftLowerChildren)
         left = html.Div(
             id="left-panel",
-            children=leftChildren,
-            style={
-                "width": "45%",
-                "margin-right": "1%",
-                "border": "1px solid cyan",
-            },
+            children=[
+                leftUpper,
+                self.changePortionButton,
+                leftLower,
+            ],
         )
 
         middle = html.Div(id="middle-gap", style={"width": "1%"})
-
-        right = html.Div(
-            id="right-panel",
-            children=rightChildren,
-            style={
-                "width": "45%",
-                "border": "1px solid cyan",
-            },
-        )
+        right = html.Div(id="right-panel", children=rightChildren)
 
         return html.Div(
-            [
-                html.Div(
-                    children=[
-                        left,
-                        middle,
-                        right,
-                    ],
-                    style={
-                        "display": "flex",
-                    },
-                ),
-                self.changePortionButton,
-            ]
+            children=[
+                left,
+                middle,
+                right,
+            ],
+            style={"display": "flex"},
         )
 
     @callback(
@@ -52,6 +43,7 @@ class SectionComponent:
         Input("input", "n_clicks"),
     )
     def changePortion(n_clicks):
+        print(n_clicks)
         if (n_clicks) % 2 == 0:
             leftStyle = {
                 "width": "35%",
