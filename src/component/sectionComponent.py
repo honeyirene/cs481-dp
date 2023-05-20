@@ -7,7 +7,16 @@ class SectionComponent:
     def __upperBar(self) -> Component:
         upperLeft = html.Div(id="upper-left-empty", style={"width": "95%"})
         changePortionButton = html.Div(html.Button("change", id="input", n_clicks=0))
-        return html.Div([upperLeft, changePortionButton], style={"display": "flex"})
+        return html.Div(
+            children=[
+                upperLeft,
+                changePortionButton,
+            ],
+            style={
+                "display": "flex",
+                "height": "4%",
+            },
+        )
 
     def __mainContainer(
         self,
@@ -36,7 +45,7 @@ class SectionComponent:
                 right,
             ],
             style={
-                "height": "100%",
+                "height": "96%",
                 "overflow": "hidden",
                 "display": "flex",
             },
@@ -57,7 +66,7 @@ class SectionComponent:
                     rightChildren,
                 ),
             ],
-            style={"height": "100%", "overflow": "hidden"},
+            style={"height": "97%", "overflow": "hidden"},
         )
 
     @callback(
@@ -92,7 +101,7 @@ class SectionComponent:
             }
             rightStyle = {
                 "width": "49.5%",
-                "height": "90%",
+                "height": "100%",
                 "border": "1px solid cyan",
                 "overflow": "auto",
             }

@@ -17,8 +17,6 @@ dash.register_page(
     __name__,
     name="Home",
     path="/",
-    top_nav=True,
-    top_nav_order=0,
 )
 
 title = TitleComponent().getFC("EmoViz")
@@ -83,7 +81,7 @@ layout = html.Div(
         title,
         mainContainer,
     ],
-    style={"height": "80vh"},
+    style={"height": "100vh", "border": "1px solid cyan"},
 )
 
 # 코드 돌아가는지 테스트용
