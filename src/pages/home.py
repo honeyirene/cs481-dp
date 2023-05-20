@@ -10,6 +10,9 @@ from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
 
+from component.viewGraphComponent import ViewGraphComponent
+from dataStructure.fakeData import FakeDataFactory
+
 dash.register_page(
     __name__,
     name="Home",
@@ -17,16 +20,6 @@ dash.register_page(
     top_nav=True,
     top_nav_order=0,
 )
-
-# 첫 페이지!
-# 가장 처음에 열립니다.
-# 아래 TODO들을 layout에 들어가게 짜면 됩니다.
-# TODO: 제목 넣기.
-# TODO: Info 넣기
-# TODO: Image 넣기.
-# TODO: 다음 버튼 넣기.
-
-toUploadButton = nextButtonComponent().getFC("next", "/upload")
 
 title = TitleComponent().getFC("EmoViz")
 
@@ -68,27 +61,19 @@ leftLower = (
     ),
 )
 
-right = html.Div(
+factory = FakeDataFactory()
+right = ViewGraphComponent().getFC(
     [
-        dbc.Col(
-            [
-                html.Div(
-                    children=[
-                        html.H2("Caution"),
-                        html.Br(),
-                        html.H5("This tool is based on K-emocon dataset."),
-                        html.H5("So, you must keep data format."),
-                        html.H5(
-                            "Please refer to the thesis in the reference section below."
-                        ),
-                        html.Br(),
-                        html.Br(),
-                        html.Br(),
-                    ],
-                ),
-            ]
-        )
-    ],
+        factory.plotData_acc,
+        factory.plotData_bvp,
+        factory.plotData_eda,
+        factory.plotData_hr,
+        factory.plotData_ibi,
+        factory.plotData_temp,
+        factory.plotData_bw,
+        factory.plotData_etc,
+        factory.plotData_audio,
+    ]
 )
 
 mainContainer = SectionComponent().getFC(leftUpper, leftLower, right)
@@ -97,7 +82,6 @@ layout = html.Div(
     children=[
         title,
         mainContainer,
-        html.Div(toUploadButton),
     ]
 )
 
