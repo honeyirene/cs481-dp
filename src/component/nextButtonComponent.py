@@ -15,5 +15,4 @@ class nextButtonComponent:
     def getFC(self, title, pageLink)-> Component:
         return dbc.Button(
             title,
-            href= pageLink,
-            className="me-md-2")
+            href= pageLink )

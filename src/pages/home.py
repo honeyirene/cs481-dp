@@ -6,6 +6,9 @@
 import dash
 from dash import html
 from component.nextButtonComponent import nextButtonComponent
+from component.titleComponent import TitleComponent
+from component.sectionComponent import SectionComponent
+import dash_bootstrap_components as dbc
 
 dash.register_page(
     __name__,
@@ -25,40 +28,76 @@ dash.register_page(
 
 toUploadButton = nextButtonComponent().getFC("next", "/upload")
 
+title = TitleComponent().getFC("EmoViz")
+
+leftUpper = html.Div(
+    [
+        dbc.Col(
+            [
+                html.Div(
+                    children=[
+                        html.H2("Purpose"),
+                        html.Br(),
+                        html.H5("Tracking your K-emocon Data with our tool."),
+                        html.H5(
+                            "We provide simple views and quality controls for catching trend of multi-modal data."
+                        ),
+                        html.Br(),
+                        html.Br(),
+                    ],
+                )
+            ]
+        )
+    ],
+)
+
+leftLower = (
+    html.Div(
+        children=[
+            html.H2("Purpose"),
+            html.Br(),
+            html.Ul(
+                html.Li(
+                    html.A(
+                        "K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations",
+                        href="https://www.nature.com/articles/s41597-020-00630-y",
+                    )
+                )
+            ),
+        ],
+    ),
+)
+
+right = html.Div(
+    [
+        dbc.Col(
+            [
+                html.Div(
+                    children=[
+                        html.H2("Caution"),
+                        html.Br(),
+                        html.H5("This tool is based on K-emocon dataset."),
+                        html.H5("So, you must keep data format."),
+                        html.H5(
+                            "Please refer to the thesis in the reference section below."
+                        ),
+                        html.Br(),
+                        html.Br(),
+                        html.Br(),
+                    ],
+                ),
+            ]
+        )
+    ],
+)
+
+mainContainer = SectionComponent().getFC(leftUpper, leftLower, right)
+
 layout = html.Div(
     children=[
-        html.H1(children=html.B("EmoViz")),
-        html.Div(html.Br()),
-        html.Br(),
-        html.Div(
-            children=[
-                html.H2("Purpose"),
-                html.Br(),
-                html.H5("Tracking your K-emocon Data with our tool."),
-                html.H5("We provide simple views and quality controls for catching trend of multi-modal data."),
-                html.Br(),
-                html.Br(),
-            ],
-        ),
-        html.Div(
-            children=[
-                html.H2("Caution"),
-                html.Br(),
-                html.H5("This tool is based on K-emocon dataset."),
-                html.H5("So, you must keep data format."),
-                html.H5("Please refer to the thesis in the reference section below."),
-                html.Br(),
-                html.Br(),
-            ],
-        ),html.Div(
-            children=[
-                html.H2("Purpose"),
-                html.Br(),
-                html.Ul(html.Li(html.A("K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations", href="https://www.nature.com/articles/s41597-020-00630-y")))
-            ],
-        ),
-        html.Div(toUploadButton)
-        
+        title,
+        mainContainer,
+        html.Div(toUploadButton),
     ]
 )
 
