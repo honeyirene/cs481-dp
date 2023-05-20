@@ -50,16 +50,16 @@ class SectionComponent:
                 "border": "1px solid cyan",
             }
             rightStyle = {
-                "width": " 65%",
+                "width": " 64%",
                 "border": "1px solid cyan",
             }
         else:
             leftStyle = {
-                "width": "50%",
+                "width": "49.5%",
                 "border": "1px solid cyan",
             }
             rightStyle = {
-                "width": " 50%",
+                "width": "49.5%",
                 "border": "1px solid cyan",
             }
 
