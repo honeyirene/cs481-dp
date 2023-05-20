@@ -1,7 +1,6 @@
 from dash import html
 from dash.development.base_component import Component
-import dash_bootstrap_components as dbc
-from dash import dcc, html, callback, Input, Output
+from dash import html, callback, Input, Output
 
 
 class SectionComponent:
