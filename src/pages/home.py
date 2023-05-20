@@ -30,7 +30,7 @@ toUploadButton = nextButtonComponent().getFC("next", "/upload")
 
 title = TitleComponent().getFC("EmoViz")
 
-left = html.Div(
+leftUpper = html.Div(
     [
         dbc.Col(
             [
@@ -49,6 +49,23 @@ left = html.Div(
             ]
         )
     ],
+)
+
+leftLower = (
+    html.Div(
+        children=[
+            html.H2("Purpose"),
+            html.Br(),
+            html.Ul(
+                html.Li(
+                    html.A(
+                        "K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations",
+                        href="https://www.nature.com/articles/s41597-020-00630-y",
+                    )
+                )
+            ),
+        ],
+    ),
 )
 
 right = html.Div(
@@ -74,26 +91,12 @@ right = html.Div(
     ],
 )
 
-mainContainer = SectionComponent().getFC(left, right)
+mainContainer = SectionComponent().getFC(leftUpper, leftLower, right)
 
 layout = html.Div(
     children=[
         title,
         mainContainer,
-        html.Div(
-            children=[
-                html.H2("Purpose"),
-                html.Br(),
-                html.Ul(
-                    html.Li(
-                        html.A(
-                            "K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations",
-                            href="https://www.nature.com/articles/s41597-020-00630-y",
-                        )
-                    )
-                ),
-            ],
-        ),
         html.Div(toUploadButton),
     ]
 )
