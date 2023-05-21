@@ -10,9 +10,8 @@ class ViewGraphComponent:
     def getFC(self, plotDatas: List[GraphPlotDataModel]) -> Component:
         graphs = []
 
-        for idx, plotData in enumerate(plotDatas):
-            fig = ViewSubGraphTrace().getFig(plotData)
-            graph = dcc.Graph(id="graph" + str(idx), figure=fig, style=dict())
+        for plotData in plotDatas:
+            graph = ViewSubGraphTrace().getFig(plotData)
             graphs.append(graph)
 
         return html.Div(children=graphs)
