@@ -1,32 +1,35 @@
 import plotly.graph_objects as go
+from dash import dcc
 from plotly.basedatatypes import BaseTraceType
 from models.graphDataModel import GraphPlotDataModel
 
 
 # QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 class ViewSubGraphTrace:
-    def __init__(self, fig: go.Figure, row: int, col: int):
-        self.fig = fig
-        self.row = row
-        self.col = col
+    def __addTrace(self, fig: go.Figure, trace: BaseTraceType):
+        fig.add_trace(trace)
 
-    def __addTrace(self, trace: BaseTraceType):
-        self.fig.add_trace(trace, row=self.row, col=self.col)
+    def __updateLayout(self, fig: go.Figure, title: str):
+        fig.update_layout(
+            yaxis_title=title,
+            margin=dict(t=10, b=10),
+            height=200,
+            legend=dict(orientation="h"),
+            showlegend=True,
+        )
 
-    def __updateLayout(self, title: str):
-        self.fig["layout"][f"yaxis{self.row}"]["title"] = title
+    def getFig(self, plotData: GraphPlotDataModel) -> go.Figure:
+        fig = go.Figure()
 
-    def update(self, plotData: GraphPlotDataModel) -> None:
         for traceData in plotData.traces:
-            self.__addTrace(
-                go.Scatter(
-                    y=traceData.y,
-                    name=traceData.name,
-                    mode="lines",
-                    legendgroup=f"{self.row}",
-                )
-            )
-        self.__updateLayout(plotData.title)
+            gobj = go.Scatter(y=traceData.y, name=traceData.name, mode="lines")
+            self.__addTrace(fig, gobj)
+
+        self.__updateLayout(fig, plotData.title)
+
+        graph = dcc.Graph(id="graph" + str(plotData.title), figure=fig, style=dict())
+
+        return graph
 
 
 # 코드 돌아가는지 테스트용
