@@ -1,6 +1,5 @@
-from dash import html
-from dash.development.base_component import Component
 from dash import html, callback, Input, Output
+from dash.development.base_component import Component
 
 
 class SectionComponent:
