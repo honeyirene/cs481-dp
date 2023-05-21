@@ -5,28 +5,34 @@ from models.graphDataModel import GraphPlotDataModel
 
 # QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 class ViewSubGraphTrace:
-    def __init__(self, fig: go.Figure, row: int, col: int):
-        self.fig = fig
-        self.row = row
-        self.col = col
-
     def __addTrace(self, trace: BaseTraceType):
-        self.fig.add_trace(trace, row=self.row, col=self.col)
+        self.fig.add_trace(trace)
 
     def __updateLayout(self, title: str):
-        self.fig["layout"][f"yaxis{self.row}"]["title"] = title
+        self.fig.update_layout(
+            yaxis_title=title,
+            margin=dict(t=10, b=10),
+            height=200,
+            legend=dict(orientation="h"),
+            showlegend=True,
+        )
+        # self.fig["layout"][f"yaxis{self.row}"]["title"] = title
 
-    def update(self, plotData: GraphPlotDataModel) -> None:
+    def getFig(self, plotData: GraphPlotDataModel) -> go.Figure:
+        self.fig = go.Figure()
+
         for traceData in plotData.traces:
             self.__addTrace(
                 go.Scatter(
                     y=traceData.y,
                     name=traceData.name,
                     mode="lines",
-                    legendgroup=f"{self.row}",
                 )
             )
+
         self.__updateLayout(plotData.title)
+
+        return self.fig
 
 
 # 코드 돌아가는지 테스트용
