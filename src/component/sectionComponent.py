@@ -3,8 +3,10 @@ from dash.development.base_component import Component
 
 
 class SectionComponent:
-    def __upperBar(self) -> Component:
-        upperLeft = html.Div(id="upper-left-empty", style={"width": "95%"})
+    def __upperBar(self, title) -> Component:
+        upperLeft = html.Div(id="upper-left-empty",
+            children=[title,],                             
+            style={"width": "95%"})
         changePortionButton = html.Div(html.Button("change", id="input", n_clicks=0))
         return html.Div(
             children=[
@@ -13,7 +15,8 @@ class SectionComponent:
             ],
             style={
                 "display": "flex",
-                "height": "4%",
+                "height": "8%",
+                "background-color": "#59c3ff"
             },
         )
 
@@ -47,18 +50,20 @@ class SectionComponent:
                 "height": "96%",
                 "overflow": "hidden",
                 "display": "flex",
+                "margin-top":"1%"
             },
         )
 
     def getFC(
         self,
+        title: Component,
         leftUpperChildren: Component,
         leftLowerChildren: Component,
         rightChildren: Component,
     ) -> Component:
         return html.Div(
             children=[
-                self.__upperBar(),
+                self.__upperBar(title),
                 self.__mainContainer(
                     leftUpperChildren,
                     leftLowerChildren,
@@ -84,15 +89,14 @@ class SectionComponent:
             rightStyle = {
                 "width": "64%",
                 "height": "100%",
-                "border": "1px solid cyan",
                 "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "300px",
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
             leftLowerStyle = {
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
         else:
             leftStyle = {
@@ -101,15 +105,14 @@ class SectionComponent:
             rightStyle = {
                 "width": "49.5%",
                 "height": "100%",
-                "border": "1px solid cyan",
                 "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "500px",
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
             leftLowerStyle = {
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
 
         return leftStyle, leftUpperStyle, leftLowerStyle, rightStyle
