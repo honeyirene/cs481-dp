@@ -9,6 +9,9 @@ from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
 
+from flask import Flask, Response
+server = Flask(__name__)
+
 from component.viewGraphComponent import ViewGraphComponent
 from dataStructure.fakeData import FakeDataFactory
 
@@ -26,9 +29,12 @@ leftUpper = html.Div(
             [
                 html.Div(
                     children=[
-                        html.Img(
-                            src="https://i.ibb.co/ctFP3Sg/1.png",
-                            style={"object-fit": "scale-down"},
+                        html.Video(
+                            src="/static/p4_688.mp4",
+                            controls=True,
+                            #autoPlay=True,
+                            #style={"object-fit": "cover"},
+                            style={"width":300, "height":200, "object-fit": "scale-down"}
                         ),
                         html.Br(),
                         # dcc.Graph(figure=fig_audio.rangeslider),
@@ -55,6 +61,10 @@ leftUpper = html.Div(
     style={"background-color": "white"},
 )
 
+@server.route('/static/<path:path>')
+def serve_static(path):
+    root_dir = os.getcwd()
+    return flask.send_from_directory(os.path.join(root_dir, 'static'), path)
 
 leftLower = (
     html.Div(
