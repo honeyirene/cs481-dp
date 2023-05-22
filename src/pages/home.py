@@ -4,7 +4,7 @@
 #########################################
 
 import dash
-from dash import html
+from dash import dcc, html
 from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
@@ -26,11 +26,24 @@ leftUpper = html.Div(
             [
                 html.Div(
                     children=[
-                        html.H2("Purpose"),
+                        html.Img(
+                            src="https://i.ibb.co/ctFP3Sg/1.png",
+                            style={"object-fit": "scale-down"},
+                        ),
                         html.Br(),
-                        html.H5("Tracking your K-emocon Data with our tool."),
-                        html.H5(
-                            "We provide simple views and quality controls for catching trend of multi-modal data."
+                        # dcc.Graph(figure=fig_audio.rangeslider),
+                        html.Div(
+                            dcc.RangeSlider(
+                                id="time_slider",
+                                min=0,
+                                max=600,
+                                marks=None,
+                                value=[0, 600],
+                                tooltip={
+                                    "placement": "bottom",
+                                    "always_visible": True,
+                                },
+                            )
                         ),
                         html.Br(),
                         html.Br(),
@@ -39,8 +52,9 @@ leftUpper = html.Div(
             ]
         )
     ],
-    style={"background-color":"white"}
+    style={"background-color": "white"},
 )
+
 
 leftLower = (
     html.Div(
@@ -56,7 +70,7 @@ leftLower = (
                 )
             ),
         ],
-        style={"background-color":"white"}
+        style={"background-color": "white"},
     ),
 )
 
@@ -81,9 +95,11 @@ layout = html.Div(
     children=[
         mainContainer,
     ],
-    style={"height": "100vh",
-        #"border": "1px solid cyan",
-        "background-color": "#f6fcff"},
+    style={
+        "height": "100vh",
+        # "border": "1px solid cyan",
+        "background-color": "#f6fcff",
+    },
 )
 
 # 코드 돌아가는지 테스트용
