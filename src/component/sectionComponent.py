@@ -4,20 +4,20 @@ from dash.development.base_component import Component
 
 class SectionComponent:
     def __upperBar(self, title) -> Component:
-        upperLeft = html.Div(id="upper-left-empty",
-            children=[title,],                             
-            style={"width": "95%"})
+        upperLeft = html.Div(
+            id="upper-left-empty",
+            children=[
+                title,
+            ],
+            style={"width": "95%"},
+        )
         changePortionButton = html.Div(html.Button("change", id="input", n_clicks=0))
         return html.Div(
             children=[
                 upperLeft,
                 changePortionButton,
             ],
-            style={
-                "display": "flex",
-                "height": "8%",
-                "background-color": "#59c3ff"
-            },
+            style={"display": "flex", "height": "8%", "background-color": "#59c3ff"},
         )
 
     def __mainContainer(
@@ -47,10 +47,9 @@ class SectionComponent:
                 right,
             ],
             style={
-                "height": "96%",
+                "height": "91%",
                 "overflow": "hidden",
                 "display": "flex",
-                "margin-top":"1%"
             },
         )
 
@@ -64,6 +63,7 @@ class SectionComponent:
         return html.Div(
             children=[
                 self.__upperBar(title),
+                html.Div(style={"height": "1%"}),
                 self.__mainContainer(
                     leftUpperChildren,
                     leftLowerChildren,
@@ -93,10 +93,10 @@ class SectionComponent:
             }
             leftUpperStyle = {
                 "height": "300px",
-                "background-color":"white",
+                "background-color": "white",
             }
             leftLowerStyle = {
-                "background-color":"white",
+                "background-color": "white",
             }
         else:
             leftStyle = {
@@ -109,10 +109,10 @@ class SectionComponent:
             }
             leftUpperStyle = {
                 "height": "500px",
-                "background-color":"white",
+                "background-color": "white",
             }
             leftLowerStyle = {
-                "background-color":"white",
+                "background-color": "white",
             }
 
         return leftStyle, leftUpperStyle, leftLowerStyle, rightStyle
