@@ -3,8 +3,10 @@ from dash.development.base_component import Component
 
 
 class SectionComponent:
-    def __upperBar(self) -> Component:
-        upperLeft = html.Div(id="upper-left-empty", style={"width": "95%"})
+    def __upperBar(self, title) -> Component:
+        upperLeft = html.Div(id="upper-left-empty",
+            children=[title,],                             
+            style={"width": "95%"})
         changePortionButton = html.Div(html.Button("change", id="input", n_clicks=0))
         return html.Div(
             children=[
@@ -13,7 +15,8 @@ class SectionComponent:
             ],
             style={
                 "display": "flex",
-                "height": "4%",
+                "height": "8%",
+                "background-color": "DodgerBlue"
             },
         )
 
@@ -52,13 +55,14 @@ class SectionComponent:
 
     def getFC(
         self,
+        title: Component,
         leftUpperChildren: Component,
         leftLowerChildren: Component,
         rightChildren: Component,
     ) -> Component:
         return html.Div(
             children=[
-                self.__upperBar(),
+                self.__upperBar(title),
                 self.__mainContainer(
                     leftUpperChildren,
                     leftLowerChildren,

@@ -5,7 +5,6 @@
 
 import dash
 from dash import html
-from component.nextButtonComponent import nextButtonComponent
 from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
@@ -19,7 +18,7 @@ dash.register_page(
     path="/",
 )
 
-title = TitleComponent().getFC("EmoViz")
+title = TitleComponent().getFC("EmoViz", "white")
 
 leftUpper = html.Div(
     [
@@ -74,14 +73,15 @@ right = ViewGraphComponent().getFC(
     ]
 )
 
-mainContainer = SectionComponent().getFC(leftUpper, leftLower, right)
+mainContainer = SectionComponent().getFC(title, leftUpper, leftLower, right)
 
 layout = html.Div(
     children=[
-        title,
         mainContainer,
     ],
-    style={"height": "100vh", "border": "1px solid cyan"},
+    style={"height": "100vh",
+        "border": "1px solid cyan",
+        "background-color": "LightGray"},
 )
 
 # 코드 돌아가는지 테스트용
