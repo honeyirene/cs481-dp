@@ -26,21 +26,35 @@ leftUpper = html.Div(
             [
                 html.Div(
                     children=[
-                        html.H2("Purpose"),
-                        html.Br(),
-                        html.H5("Tracking your K-emocon Data with our tool."),
-                        html.H5(
-                            "We provide simple views and quality controls for catching trend of multi-modal data."
-                        ),
-                        html.Br(),
-                        html.Br(),
-                    ],
+                                html.Img(
+                                    src="https://i.ibb.co/ctFP3Sg/1.png",
+                                    style={"object-fit":"scale-down"},
+                                ),
+                                html.Br(),
+                                # dcc.Graph(figure=fig_audio.rangeslider),
+                                html.Div(
+                                    dcc.RangeSlider(
+                                        id="time_slider",
+                                        min=0,
+                                        max=600,
+                                        marks=None,
+                                        value=[0, 600],
+                                        tooltip={
+                                            "placement": "bottom",
+                                            "always_visible": True,
+                                        },
+                                    )
+                                ),
+                                html.Br(),
+                                html.Br()
+                            ],
                 )
             ]
         )
     ],
     style={"background-color":"white"}
 )
+
 
 leftLower = (
     html.Div(
