@@ -16,7 +16,7 @@ class SectionComponent:
             style={
                 "display": "flex",
                 "height": "8%",
-                "background-color": "DodgerBlue"
+                "background-color": "#59c3ff"
             },
         )
 
@@ -50,6 +50,7 @@ class SectionComponent:
                 "height": "96%",
                 "overflow": "hidden",
                 "display": "flex",
+                "margin-top":"1%"
             },
         )
 
@@ -88,15 +89,14 @@ class SectionComponent:
             rightStyle = {
                 "width": "64%",
                 "height": "100%",
-                "border": "1px solid cyan",
                 "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "300px",
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
             leftLowerStyle = {
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
         else:
             leftStyle = {
@@ -105,15 +105,14 @@ class SectionComponent:
             rightStyle = {
                 "width": "49.5%",
                 "height": "100%",
-                "border": "1px solid cyan",
                 "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "500px",
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
             leftLowerStyle = {
-                "border": "1px solid cyan",
+                "background-color":"white",
             }
 
         return leftStyle, leftUpperStyle, leftLowerStyle, rightStyle
