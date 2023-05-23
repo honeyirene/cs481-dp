@@ -24,12 +24,29 @@ class ViewVideoComponent:
                 src="/"+src+"/"+filename,
                 controls=True,
                 #autoPlay=True,
-                style={"object-fit": "cover"},
+                #style={"object-fit": "cover"},
+                style={"width":300, "height":200}
                 #style={"width":300, "height":200, "object-fit": "scale-down"}
-            )
+            ),
+            html.Br(),
+            # dcc.Graph(figure=fig_audio.rangeslider),
+            html.Div(
+                dcc.RangeSlider(
+                    id="time_slider",
+                    min=0,
+                    max=600,
+                    marks=None,
+                    value=[0, 600],
+                    tooltip={
+                        "placement": "bottom",
+                        "always_visible": True,
+                    },
+                )
+            ),
+            html.Br(),
+            html.Br(),
             ]
         )
-
 
 # 코드 돌아가는지 테스트용
 if __name__ == "__main__":
