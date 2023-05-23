@@ -92,10 +92,10 @@ class SectionComponent:
             }
             leftUpperStyle = {
                 "height": "auto",
-                "background-color": "white",
+                "backgroundColor": "white",
             }
             leftLowerStyle = {
-                "background-color": "white",
+                "backgroundColor": "white",
             }
         else:
             leftStyle = {
@@ -107,10 +107,10 @@ class SectionComponent:
             }
             leftUpperStyle = {
                 "height": "auto",
-                "background-color": "white",
+                "backgroundColor": "white",
             }
             leftLowerStyle = {
-                "background-color": "white",
+                "backgroundColor": "white",
             }
 
         return leftStyle, leftUpperStyle, leftLowerStyle, rightStyle
