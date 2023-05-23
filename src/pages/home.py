@@ -13,7 +13,8 @@ from component.viewIIDComponent import ViewIIDComponent
 from component.viewVideoComponent import ViewVideoComponent
 import dash_bootstrap_components as dbc
 from dash import dcc
-#from app import app
+
+# from app import app
 
 from flask import Flask, Response
 
@@ -60,11 +61,11 @@ right = ViewGraphComponent().getFC(
         factory.plotData_temp,
         factory.plotData_bw,
         factory.plotData_etc,
-        #factory.plotData_audio,
+        # factory.plotData_audio,
     ]
 )
 
-mainContainer = SectionComponent().getFC(leftUpper, leftLower, right)
+mainContainer = SectionComponent().getFC(title, leftUpper, leftLower, right)
 
 layout = html.Div(
     children=[
