@@ -92,7 +92,7 @@ class SectionComponent:
                 "overflow": "auto",
             }
             leftUpperStyle = {
-                "height": "300px",
+                "height": "auto",
                 "background-color": "white",
             }
             leftLowerStyle = {
@@ -108,7 +108,7 @@ class SectionComponent:
                 "overflow": "auto",
             }
             leftUpperStyle = {
-                "height": "500px",
+                "height": "auto",
                 "background-color": "white",
             }
             leftLowerStyle = {
