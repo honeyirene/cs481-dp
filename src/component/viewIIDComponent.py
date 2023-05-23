@@ -24,9 +24,14 @@ class ViewIIDComponent:
                              "margin-right": "12px"
 
                          }
-                        )
+                        ),
+                html.Br(),
+                html.Br(),
+                html.Div(infoModal,
+                         style={'textAlign':'center'})
             ]
         )
+
 
 
 
