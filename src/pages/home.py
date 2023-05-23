@@ -69,10 +69,9 @@ mainContainer = SectionComponent().getFC(title, leftUpper, leftLower, right)
 
 layout = html.Div(
     children=[
-        title,
         mainContainer,
     ],
-    style={"height": "100vh", "border": "1px solid cyan"},
+    style={"height": "100vh"},
 )
 
 # 코드 돌아가는지 테스트용
