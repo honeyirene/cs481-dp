@@ -1,21 +1,21 @@
 import csv
 import pandas as pd
 
-emo_ann_external = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/emotion_annotations/aggregated_external_annotations/P4.external.csv')
-emo_ann_partner = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/emotion_annotations/partner_annotations/P4.partner.csv')
-emo_ann_self = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/emotion_annotations/self_annotations/P4.self.csv')
+emo_ann_external = pd.read_csv('../emotion_annotations/aggregated_external_annotations/P4.external.csv')
+emo_ann_partner = pd.read_csv('../emotion_annotations/partner_annotations/P4.partner.csv')
+emo_ann_self = pd.read_csv('../emotion_annotations/self_annotations/P4.self.csv')
 
-E4_ACC = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_ACC.csv')
-E4_BVP = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_BVP.csv')
-E4_EDA = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_EDA.csv')
-E4_HR = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_HR.csv')
-E4_IBI = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_IBI.csv')
-E4_TEMP = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/e4_data/4/E4_TEMP.csv')
+E4_ACC = pd.read_csv('../e4_data/4/E4_ACC.csv')
+E4_BVP = pd.read_csv('../e4_data/4/E4_BVP.csv')
+E4_EDA = pd.read_csv('../e4_data/4/E4_EDA.csv')
+E4_HR = pd.read_csv('../e4_data/4/E4_HR.csv')
+E4_IBI = pd.read_csv('../e4_data/4/E4_IBI.csv')
+E4_TEMP = pd.read_csv('../e4_data/4/E4_TEMP.csv')
 
-Attention = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/neurosky_polar_data/4/Attention.csv')
-BrainWave = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/neurosky_polar_data/4/BrainWave.csv')
-Meditation = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/neurosky_polar_data/4/Meditation.csv')
-Polar_HR = pd.read_csv('C:/Users/BGL/saeyeon/cs481-dp/neurosky_polar_data/4/Polar_HR.csv')
+Attention = pd.read_csv('../neurosky_polar_data/4/Attention.csv')
+BrainWave = pd.read_csv('../neurosky_polar_data/4/BrainWave.csv')
+Meditation = pd.read_csv('../neurosky_polar_data/4/Meditation.csv')
+Polar_HR = pd.read_csv('../neurosky_polar_data/4/Polar_HR.csv')
 
 import random
 from component.viewGraphComponent import ViewGraphComponent
