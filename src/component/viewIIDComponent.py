@@ -1,5 +1,9 @@
 from dash import html
 from dash.development.base_component import Component
+from component.InfoModal import InfoModal
+import dash_bootstrap_components as dbc
+
+infoModal = InfoModal().getFC()
 
 
 # QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
