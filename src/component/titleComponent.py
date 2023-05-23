@@ -8,14 +8,14 @@ class TitleComponent:
         return html.Div(
             children=title,
             style={
-                "height": "3%",
+                "height": "100%",
                 "fontSize": "36px",
                 "fontWeight": "bold",
                 "color": color,
-                # "marginTop": "12px",
+                "display": "flex",
+                "alignItems": "center",
                 "marginLeft": "36px",
                 "marginRight": "36px",
-                # "marginBottom": "12px",
             },
         )
 

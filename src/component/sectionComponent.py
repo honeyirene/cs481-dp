@@ -1,3 +1,4 @@
+import dash_daq as daq
 from dash import html, callback, Input, Output
 from dash.development.base_component import Component
 
@@ -11,7 +12,18 @@ class SectionComponent:
             ],
             style={"width": "95%"},
         )
-        changePortionButton = html.Div(html.Button("change", id="input", n_clicks=0))
+        changePortionButton = html.Div(
+            daq.ToggleSwitch(
+                id="input",
+                label="Extend Video",
+                labelPosition="bottom",
+                value=False,
+            ),
+            style={
+                "display": "flex",
+                "alignItems": "center",
+            },
+        )
         return html.Div(
             children=[
                 upperLeft,
@@ -70,7 +82,7 @@ class SectionComponent:
                     rightChildren,
                 ),
             ],
-            style={"height": "97%", "overflow": "hidden"},
+            style={"height": "100%", "overflow": "hidden"},
         )
 
     @callback(
@@ -78,11 +90,11 @@ class SectionComponent:
         Output("left-upper-panel", "style"),
         Output("left-lower-panel", "style"),
         Output("right-panel", "style"),
-        Input("input", "n_clicks"),
+        Input("input", "value"),
     )
-    def changePortion(n_clicks):
-        print(n_clicks)
-        if (n_clicks) % 2 == 0:
+    def changePortion(value):
+        print(value)
+        if not value:
             leftStyle = {
                 "width": "35%",
             }
