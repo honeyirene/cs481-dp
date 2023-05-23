@@ -10,6 +10,10 @@ from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
 
 from flask import Flask, Response
+from component.viewIIDComponent import ViewIIDComponent
+
+from component.viewVideoComponent import ViewVideoComponent
+
 server = Flask(__name__)
 
 from component.viewGraphComponent import ViewGraphComponent
@@ -23,9 +27,12 @@ dash.register_page(
 
 title = TitleComponent().getFC("EmoViz", "white")
 
-leftUpper = ViewVideoComponent().getFC("static","p4_688.mp4")
+leftUpper = ViewVideoComponent().getFC("static", "p4_688.mp4")
 
-leftLower = ViewIIDComponent().getFC("Participant 4","gender: male, age: 25."+"\n"+"\n"+"All participants were students at KAIST.")
+leftLower = ViewIIDComponent().getFC(
+    "Participant 4",
+    "gender: male, age: 25." + "\n" + "\n" + "All participants were students at KAIST.",
+)
 
 factory = FakeDataFactory()
 right = ViewGraphComponent().getFC(

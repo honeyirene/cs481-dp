@@ -2,9 +2,9 @@ from dash import html
 from dash.development.base_component import Component
 from dash import dcc
 
-#from flask import Flask, Response
+# from flask import Flask, Response
 
-#server = Flask(__name__)
+# server = Flask(__name__)
 
 # QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 """class ViewVideoComponent:
@@ -16,37 +16,40 @@ from dash import dcc
                      style={"object-fit": "scale-down"})
             ]
         )"""
+
+
 class ViewVideoComponent:
     def getFC(self, src=str, filename=str) -> Component:
         return html.Div(
             children=[
-            html.Video(
-                src="/"+src+"/"+filename,
-                controls=True,
-                #autoPlay=True,
-                #style={"object-fit": "cover"},
-                style={"width":300, "height":200}
-                #style={"width":300, "height":200, "object-fit": "scale-down"}
-            ),
-            html.Br(),
-            # dcc.Graph(figure=fig_audio.rangeslider),
-            html.Div(
-                dcc.RangeSlider(
-                    id="time_slider",
-                    min=0,
-                    max=600,
-                    marks=None,
-                    value=[0, 600],
-                    tooltip={
-                        "placement": "bottom",
-                        "always_visible": True,
-                    },
-                )
-            ),
-            html.Br(),
-            html.Br(),
+                html.Video(
+                    src="/" + src + "/" + filename,
+                    controls=True,
+                    # autoPlay=True,
+                    # style={"object-fit": "cover"},
+                    style={"width": "100%", "height": "100%"}
+                    # style={"width":300, "height":200, "object-fit": "scale-down"}
+                ),
+                html.Br(),
+                # dcc.Graph(figure=fig_audio.rangeslider),
+                html.Div(
+                    dcc.RangeSlider(
+                        id="time_slider",
+                        min=0,
+                        max=600,
+                        marks=None,
+                        value=[0, 600],
+                        tooltip={
+                            "placement": "bottom",
+                            "always_visible": True,
+                        },
+                    )
+                ),
+                html.Br(),
+                html.Br(),
             ]
         )
+
 
 # 코드 돌아가는지 테스트용
 if __name__ == "__main__":
