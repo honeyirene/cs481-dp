@@ -19,6 +19,13 @@ from flask import Flask, Response
 
 server = Flask(__name__)
 
+from flask import Flask, Response
+from component.viewIIDComponent import ViewIIDComponent
+
+from component.viewVideoComponent import ViewVideoComponent
+
+server = Flask(__name__)
+
 from component.viewGraphComponent import ViewGraphComponent
 from dataStructure.researchData import ResearchDataFactory
 
@@ -28,12 +35,16 @@ dash.register_page(
     path="/",
 )
 
-title = TitleComponent().getFC("EmoViz")
 
-#leftUpper = ViewVideoComponent().getFC("https://i.ibb.co/ctFP3Sg/1.png")
-leftUpper = ViewVideoComponent().getFC("static","p4_688.mp4")
+title = TitleComponent().getFC("EmoViz", "white")
 
-leftLower = ViewIIDComponent().getFC("Participant 4","gender: male, age: 25."+"\n"+"\n"+"All participants were students at KAIST.")
+leftUpper = ViewVideoComponent().getFC("assets", "p4_688.mp4")
+
+leftLower = ViewIIDComponent().getFC(
+    "Participant 4",
+    "gender: male, age: 25." + "\n" + "\n" + "All participants were students at KAIST.",
+)
+
 
 factory = ResearchDataFactory()
 right = ViewGraphComponent().getFC(
