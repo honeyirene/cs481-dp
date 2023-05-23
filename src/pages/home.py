@@ -4,31 +4,25 @@
 #########################################
 
 import dash
-import os
-from dash import html
-from component.nextButtonComponent import nextButtonComponent
+from component.homeRightComponent import HomeRightComponent
 from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 from component.viewIIDComponent import ViewIIDComponent
 from component.viewVideoComponent import ViewVideoComponent
-import dash_bootstrap_components as dbc
-from dash import dcc
+from dash import html
+from flask import Flask
 
 # from app import app
 
-from flask import Flask, Response
 
 server = Flask(__name__)
 
-from flask import Flask, Response
+from flask import Flask
 from component.viewIIDComponent import ViewIIDComponent
 
 from component.viewVideoComponent import ViewVideoComponent
 
 server = Flask(__name__)
-
-from component.viewGraphComponent import ViewGraphComponent
-from dataStructure.researchData import ResearchDataFactory
 
 dash.register_page(
     __name__,
@@ -46,24 +40,7 @@ leftLower = ViewIIDComponent().getFC(
     "gender: male, age: 25." + "\n" + "\n" + "All participants were students at KAIST.",
 )
 
-
-factory = ResearchDataFactory()
-right = ViewGraphComponent().getFC(
-    [
-        factory.plotData_emo_ann_ext,
-        factory.plotData_emo_ann_pnr,
-        factory.plotData_emo_ann_self,
-        factory.plotData_acc,
-        factory.plotData_bvp,
-        factory.plotData_eda,
-        factory.plotData_hr,
-        factory.plotData_ibi,
-        factory.plotData_temp,
-        factory.plotData_bw,
-        factory.plotData_etc,
-        # factory.plotData_audio,
-    ]
-)
+right = HomeRightComponent().getFC()
 
 mainContainer = SectionComponent().getFC(title, leftUpper, leftLower, right)
 
