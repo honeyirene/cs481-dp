@@ -9,6 +9,13 @@ from component.titleComponent import TitleComponent
 from component.sectionComponent import SectionComponent
 import dash_bootstrap_components as dbc
 
+from flask import Flask, Response
+from component.viewIIDComponent import ViewIIDComponent
+
+from component.viewVideoComponent import ViewVideoComponent
+
+server = Flask(__name__)
+
 from component.viewGraphComponent import ViewGraphComponent
 from dataStructure.fakeData import FakeDataFactory
 
@@ -20,58 +27,11 @@ dash.register_page(
 
 title = TitleComponent().getFC("EmoViz", "white")
 
-leftUpper = html.Div(
-    [
-        dbc.Col(
-            [
-                html.Div(
-                    children=[
-                        html.Img(
-                            src="https://i.ibb.co/ctFP3Sg/1.png",
-                            style={"object-fit": "scale-down"},
-                        ),
-                        html.Br(),
-                        # dcc.Graph(figure=fig_audio.rangeslider),
-                        html.Div(
-                            dcc.RangeSlider(
-                                id="time_slider",
-                                min=0,
-                                max=600,
-                                marks=None,
-                                value=[0, 600],
-                                tooltip={
-                                    "placement": "bottom",
-                                    "always_visible": True,
-                                },
-                            )
-                        ),
-                        html.Br(),
-                        html.Br(),
-                    ],
-                )
-            ]
-        )
-    ],
-    style={"background-color": "white"},
-)
+leftUpper = ViewVideoComponent().getFC("assets", "p4_688.mp4")
 
-
-leftLower = (
-    html.Div(
-        children=[
-            html.H2("Purpose"),
-            html.Br(),
-            html.Ul(
-                html.Li(
-                    html.A(
-                        "K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations",
-                        href="https://www.nature.com/articles/s41597-020-00630-y",
-                    )
-                )
-            ),
-        ],
-        style={"background-color": "white"},
-    ),
+leftLower = ViewIIDComponent().getFC(
+    "Participant 4",
+    "gender: male, age: 25." + "\n" + "\n" + "All participants were students at KAIST.",
 )
 
 factory = FakeDataFactory()
