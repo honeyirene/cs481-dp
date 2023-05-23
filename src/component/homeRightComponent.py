@@ -53,9 +53,8 @@ class HomeRightComponent:
             ],
             tooltip={
                 "placement": "bottom",
-                "always_visible": True,
+                "always_visible": False,
             },
-            # display_format="mm:ss",
         )
         timelineContainer = html.Div(
             timeRangeSlider,

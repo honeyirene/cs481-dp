@@ -100,41 +100,64 @@ class ResearchDataFactory:
             "attention & meditation", ATME_DF, [traceData_att, traceData_med]
         )
 
-        traceData_ext_arousal = GraphTraceDataModel("seconds", "arousal", "arousal")
-        traceData_ext_valence = GraphTraceDataModel("seconds", "valence", "valence")
-        traceData_ext_cheerful = GraphTraceDataModel("seconds", "cheerful", "cheerful")
-        traceData_ext_happy = GraphTraceDataModel("seconds", "happy", "happy")
-        traceData_ext_angry = GraphTraceDataModel("seconds", "angry", "angry")
-        traceData_ext_nervous = GraphTraceDataModel("seconds", "nervous", "nervous")
-        traceData_ext_sad = GraphTraceDataModel("seconds", "sad", "sad")
-        traceData_ext_boredom = GraphTraceDataModel("seconds", "boredom", "boredom")
-        traceData_ext_confusion = GraphTraceDataModel(
-            "seconds", "confusion", "confusion"
+        basetimestamp = self.plotData_acc.df["timestamp"][0]
+        EMO_ANN_EXTERNAL["timestamp"] = (
+            EMO_ANN_EXTERNAL["seconds"]
+            .astype(int)
+            .apply(lambda x: x * 1000 + basetimestamp)
         )
-        traceData_ext_delight = GraphTraceDataModel("seconds", "delight", "delight")
+        EMO_ANN_PARTNER["timestamp"] = (
+            EMO_ANN_PARTNER["seconds"]
+            .astype(int)
+            .apply(lambda x: x * 1000 + basetimestamp)
+        )
+        EMO_ANN_SELF["timestamp"] = (
+            EMO_ANN_SELF["seconds"]
+            .astype(int)
+            .apply(lambda x: x * 1000 + basetimestamp)
+        )
+
+        traceData_ext_arousal = GraphTraceDataModel("timestamp", "arousal", "arousal")
+        traceData_ext_valence = GraphTraceDataModel("timestamp", "valence", "valence")
+        traceData_ext_cheerful = GraphTraceDataModel(
+            "timestamp", "cheerful", "cheerful"
+        )
+        traceData_ext_happy = GraphTraceDataModel("timestamp", "happy", "happy")
+        traceData_ext_angry = GraphTraceDataModel("timestamp", "angry", "angry")
+        traceData_ext_nervous = GraphTraceDataModel("timestamp", "nervous", "nervous")
+        traceData_ext_sad = GraphTraceDataModel("timestamp", "sad", "sad")
+        traceData_ext_boredom = GraphTraceDataModel("timestamp", "boredom", "boredom")
+        traceData_ext_confusion = GraphTraceDataModel(
+            "timestamp", "confusion", "confusion"
+        )
+        traceData_ext_delight = GraphTraceDataModel("timestamp", "delight", "delight")
         traceData_ext_concentration = GraphTraceDataModel(
-            "seconds", "concentration", "concentration"
+            "timestamp", "concentration", "concentration"
         )
         traceData_ext_frustration = GraphTraceDataModel(
-            "seconds", "frustration", "frustration"
+            "timestamp", "frustration", "frustration"
         )
-        traceData_ext_surprise = GraphTraceDataModel("seconds", "surprise", "surprise")
+        traceData_ext_surprise = GraphTraceDataModel(
+            "timestamp", "surprise", "surprise"
+        )
         traceData_ext_none_1 = GraphTraceDataModel(
-            "seconds", "none_1", "commonly used BROMP none"
+            "timestamp", "none_1", "commonly used BROMP none"
         )
         traceData_ext_confrustion = GraphTraceDataModel(
-            "seconds", "confrustion", "confrustion"
+            "timestamp", "confrustion", "confrustion"
         )
-        traceData_ext_contempt = GraphTraceDataModel("seconds", "contempt", "contempt")
+        traceData_ext_contempt = GraphTraceDataModel(
+            "timestamp", "contempt", "contempt"
+        )
         traceData_ext_dejection = GraphTraceDataModel(
-            "seconds", "dejection", "dejection"
+            "timestamp", "dejection", "dejection"
         )
-        traceData_ext_disgust = GraphTraceDataModel("seconds", "disgust", "disgust")
-        traceData_ext_eureka = GraphTraceDataModel("seconds", "eureka", "eureka")
-        traceData_ext_pride = GraphTraceDataModel("seconds", "pride", "pride")
-        traceData_ext_sorrow = GraphTraceDataModel("seconds", "sorrow", "sorrow")
+        traceData_ext_disgust = GraphTraceDataModel("timestamp", "disgust", "disgust")
+        traceData_ext_eureka = GraphTraceDataModel("timestamp", "eureka", "eureka")
+        traceData_ext_pride = GraphTraceDataModel("timestamp", "pride", "pride")
+        traceData_ext_sorrow = GraphTraceDataModel("timestamp", "sorrow", "sorrow")
         traceData_ext_none_2 = GraphTraceDataModel(
-            "seconds", "none_2", "less commonly used BROMP none"
+            "timestamp", "none_2", "less commonly used BROMP none"
         )
 
         self.plotData_emo_ann_ext = GraphPlotDataModel(
@@ -166,41 +189,47 @@ class ResearchDataFactory:
             ],
         )
 
-        traceData_pnr_arousal = GraphTraceDataModel("seconds", "arousal", "arousal")
-        traceData_pnr_valence = GraphTraceDataModel("seconds", "valence", "valence")
-        traceData_pnr_cheerful = GraphTraceDataModel("seconds", "cheerful", "cheerful")
-        traceData_pnr_happy = GraphTraceDataModel("seconds", "happy", "happy")
-        traceData_pnr_angry = GraphTraceDataModel("seconds", "angry", "angry")
-        traceData_pnr_nervous = GraphTraceDataModel("seconds", "nervous", "nervous")
-        traceData_pnr_sad = GraphTraceDataModel("seconds", "sad", "sad")
-        traceData_pnr_boredom = GraphTraceDataModel("seconds", "boredom", "boredom")
-        traceData_pnr_confusion = GraphTraceDataModel(
-            "seconds", "confusion", "confusion"
+        traceData_pnr_arousal = GraphTraceDataModel("timestamp", "arousal", "arousal")
+        traceData_pnr_valence = GraphTraceDataModel("timestamp", "valence", "valence")
+        traceData_pnr_cheerful = GraphTraceDataModel(
+            "timestamp", "cheerful", "cheerful"
         )
-        traceData_pnr_delight = GraphTraceDataModel("seconds", "delight", "delight")
+        traceData_pnr_happy = GraphTraceDataModel("timestamp", "happy", "happy")
+        traceData_pnr_angry = GraphTraceDataModel("timestamp", "angry", "angry")
+        traceData_pnr_nervous = GraphTraceDataModel("timestamp", "nervous", "nervous")
+        traceData_pnr_sad = GraphTraceDataModel("timestamp", "sad", "sad")
+        traceData_pnr_boredom = GraphTraceDataModel("timestamp", "boredom", "boredom")
+        traceData_pnr_confusion = GraphTraceDataModel(
+            "timestamp", "confusion", "confusion"
+        )
+        traceData_pnr_delight = GraphTraceDataModel("timestamp", "delight", "delight")
         traceData_pnr_concentration = GraphTraceDataModel(
-            "seconds", "concentration", "concentration"
+            "timestamp", "concentration", "concentration"
         )
         traceData_pnr_frustration = GraphTraceDataModel(
-            "seconds", "frustration", "frustration"
+            "timestamp", "frustration", "frustration"
         )
-        traceData_pnr_surprise = GraphTraceDataModel("seconds", "surprise", "surprise")
+        traceData_pnr_surprise = GraphTraceDataModel(
+            "timestamp", "surprise", "surprise"
+        )
         traceData_pnr_none_1 = GraphTraceDataModel(
-            "seconds", "none_1", "commonly used BROMP none"
+            "timestamp", "none_1", "commonly used BROMP none"
         )
         traceData_pnr_confrustion = GraphTraceDataModel(
-            "seconds", "confrustion", "confrustion"
+            "timestamp", "confrustion", "confrustion"
         )
-        traceData_pnr_contempt = GraphTraceDataModel("seconds", "contempt", "contempt")
+        traceData_pnr_contempt = GraphTraceDataModel(
+            "timestamp", "contempt", "contempt"
+        )
         traceData_pnr_dejection = GraphTraceDataModel(
-            "seconds", "dejection", "dejection"
+            "timestamp", "dejection", "dejection"
         )
-        traceData_pnr_disgust = GraphTraceDataModel("seconds", "disgust", "disgust")
-        traceData_pnr_eureka = GraphTraceDataModel("seconds", "eureka", "eureka")
-        traceData_pnr_pride = GraphTraceDataModel("seconds", "pride", "pride")
-        traceData_pnr_sorrow = GraphTraceDataModel("seconds", "sorrow", "sorrow")
+        traceData_pnr_disgust = GraphTraceDataModel("timestamp", "disgust", "disgust")
+        traceData_pnr_eureka = GraphTraceDataModel("timestamp", "eureka", "eureka")
+        traceData_pnr_pride = GraphTraceDataModel("timestamp", "pride", "pride")
+        traceData_pnr_sorrow = GraphTraceDataModel("timestamp", "sorrow", "sorrow")
         traceData_pnr_none_2 = GraphTraceDataModel(
-            "seconds", "none_2", "less commonly used BROMP none"
+            "timestamp", "none_2", "less commonly used BROMP none"
         )
 
         self.plotData_emo_ann_pnr = GraphPlotDataModel(
@@ -232,41 +261,47 @@ class ResearchDataFactory:
             ],
         )
 
-        traceData_self_arousal = GraphTraceDataModel("seconds", "arousal", "arousal")
-        traceData_self_valence = GraphTraceDataModel("seconds", "valence", "valence")
-        traceData_self_cheerful = GraphTraceDataModel("seconds", "cheerful", "cheerful")
-        traceData_self_happy = GraphTraceDataModel("seconds", "happy", "happy")
-        traceData_self_angry = GraphTraceDataModel("seconds", "angry", "angry")
-        traceData_self_nervous = GraphTraceDataModel("seconds", "nervous", "nervous")
-        traceData_self_sad = GraphTraceDataModel("seconds", "sad", "sad")
-        traceData_self_boredom = GraphTraceDataModel("seconds", "boredom", "boredom")
-        traceData_self_confusion = GraphTraceDataModel(
-            "seconds", "confusion", "confusion"
+        traceData_self_arousal = GraphTraceDataModel("timestamp", "arousal", "arousal")
+        traceData_self_valence = GraphTraceDataModel("timestamp", "valence", "valence")
+        traceData_self_cheerful = GraphTraceDataModel(
+            "timestamp", "cheerful", "cheerful"
         )
-        traceData_self_delight = GraphTraceDataModel("seconds", "delight", "delight")
+        traceData_self_happy = GraphTraceDataModel("timestamp", "happy", "happy")
+        traceData_self_angry = GraphTraceDataModel("timestamp", "angry", "angry")
+        traceData_self_nervous = GraphTraceDataModel("timestamp", "nervous", "nervous")
+        traceData_self_sad = GraphTraceDataModel("timestamp", "sad", "sad")
+        traceData_self_boredom = GraphTraceDataModel("timestamp", "boredom", "boredom")
+        traceData_self_confusion = GraphTraceDataModel(
+            "timestamp", "confusion", "confusion"
+        )
+        traceData_self_delight = GraphTraceDataModel("timestamp", "delight", "delight")
         traceData_self_concentration = GraphTraceDataModel(
-            "seconds", "concentration", "concentration"
+            "timestamp", "concentration", "concentration"
         )
         traceData_self_frustration = GraphTraceDataModel(
-            "seconds", "frustration", "frustration"
+            "timestamp", "frustration", "frustration"
         )
-        traceData_self_surprise = GraphTraceDataModel("seconds", "surprise", "surprise")
+        traceData_self_surprise = GraphTraceDataModel(
+            "timestamp", "surprise", "surprise"
+        )
         traceData_self_none_1 = GraphTraceDataModel(
-            "seconds", "none_1", "commonly used BROMP none"
+            "timestamp", "none_1", "commonly used BROMP none"
         )
         traceData_self_confrustion = GraphTraceDataModel(
-            "seconds", "confrustion", "confrustion"
+            "timestamp", "confrustion", "confrustion"
         )
-        traceData_self_contempt = GraphTraceDataModel("seconds", "contempt", "contempt")
+        traceData_self_contempt = GraphTraceDataModel(
+            "timestamp", "contempt", "contempt"
+        )
         traceData_self_dejection = GraphTraceDataModel(
-            "seconds", "dejection", "dejection"
+            "timestamp", "dejection", "dejection"
         )
-        traceData_self_disgust = GraphTraceDataModel("seconds", "disgust", "disgust")
-        traceData_self_eureka = GraphTraceDataModel("seconds", "eureka", "eureka")
-        traceData_self_pride = GraphTraceDataModel("seconds", "pride", "pride")
-        traceData_self_sorrow = GraphTraceDataModel("seconds", "sorrow", "sorrow")
+        traceData_self_disgust = GraphTraceDataModel("timestamp", "disgust", "disgust")
+        traceData_self_eureka = GraphTraceDataModel("timestamp", "eureka", "eureka")
+        traceData_self_pride = GraphTraceDataModel("timestamp", "pride", "pride")
+        traceData_self_sorrow = GraphTraceDataModel("timestamp", "sorrow", "sorrow")
         traceData_self_none_2 = GraphTraceDataModel(
-            "seconds", "none_2", "less commonly used BROMP none"
+            "timestamp", "none_2", "less commonly used BROMP none"
         )
 
         self.plotData_emo_ann_self = GraphPlotDataModel(
