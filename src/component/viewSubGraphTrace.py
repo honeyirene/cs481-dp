@@ -16,7 +16,7 @@ class ViewSubGraphTrace:
             height=200,
             legend=dict(orientation="h"),
             showlegend=True,
-            dragmode=False,
+            dragmode="turntable",
         )
 
     def getFig(self, plotData: GraphPlotDataModel) -> go.Figure:
