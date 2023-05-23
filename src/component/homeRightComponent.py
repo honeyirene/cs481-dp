@@ -1,12 +1,12 @@
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
 from dash import html
-from dataStructure.fakeData import FakeDataFactory
+from dataStructure.researchData import ResearchDataFactory
 
 
 class HomeRightComponent:
     def getFC(self) -> go.Figure:
-        factory = FakeDataFactory()
+        factory = ResearchDataFactory()
         graphComponent = ViewGraphComponent().getFC(
             [
                 factory.plotData_emo_ann_ext,
