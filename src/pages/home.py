@@ -23,66 +23,9 @@ dash.register_page(
 
 title = TitleComponent().getFC("EmoViz", "white")
 
-leftUpper = html.Div(
-    [
-        dbc.Col(
-            [
-                html.Div(
-                    children=[
-                        html.Video(
-                            src="/static/p4_688.mp4",
-                            controls=True,
-                            #autoPlay=True,
-                            #style={"object-fit": "cover"},
-                            style={"width":300, "height":200, "object-fit": "scale-down"}
-                        ),
-                        html.Br(),
-                        # dcc.Graph(figure=fig_audio.rangeslider),
-                        html.Div(
-                            dcc.RangeSlider(
-                                id="time_slider",
-                                min=0,
-                                max=600,
-                                marks=None,
-                                value=[0, 600],
-                                tooltip={
-                                    "placement": "bottom",
-                                    "always_visible": True,
-                                },
-                            )
-                        ),
-                        html.Br(),
-                        html.Br(),
-                    ],
-                )
-            ]
-        )
-    ],
-    style={"background-color": "white"},
-)
+leftUpper = ViewVideoComponent().getFC("static","p4_688.mp4")
 
-@server.route('/static/<path:path>')
-def serve_static(path):
-    root_dir = os.getcwd()
-    return flask.send_from_directory(os.path.join(root_dir, 'static'), path)
-
-leftLower = (
-    html.Div(
-        children=[
-            html.H2("Purpose"),
-            html.Br(),
-            html.Ul(
-                html.Li(
-                    html.A(
-                        "K-EmoCon, a multimodal sensor dataset for continuous emotion recognition in naturalistic conversations",
-                        href="https://www.nature.com/articles/s41597-020-00630-y",
-                    )
-                )
-            ),
-        ],
-        style={"background-color": "white"},
-    ),
-)
+leftLower = ViewIIDComponent().getFC("Participant 4","gender: male, age: 25."+"\n"+"\n"+"All participants were students at KAIST.")
 
 factory = FakeDataFactory()
 right = ViewGraphComponent().getFC(
