@@ -23,10 +23,15 @@ class HomeRightComponent:
                 # factory.plotData_audio,
             ]
         )
-        graphContainer = html.Div(graphComponent, style={"height": "90%"})
+        graphContainer = html.Div(
+            graphComponent, style={"height": "94%", "overflow": "auto"}
+        )
 
-        timelineContainer = html.Div(style={"height": "10%"})
-        return html.Div([graphContainer, timelineContainer])
+        timelineContainer = html.Div("asdfasdf", style={"height": "6%"})
+        return html.Div(
+            [graphContainer, timelineContainer],
+            style={"height": "100%", "overflow": "hidden"},
+        )
 
 
 # 코드 돌아가는지 테스트용

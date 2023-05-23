@@ -89,7 +89,6 @@ class SectionComponent:
             rightStyle = {
                 "width": "64%",
                 "height": "100%",
-                "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "auto",
@@ -105,7 +104,6 @@ class SectionComponent:
             rightStyle = {
                 "width": "49.5%",
                 "height": "100%",
-                "overflow": "auto",
             }
             leftUpperStyle = {
                 "height": "auto",

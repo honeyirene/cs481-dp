@@ -17,9 +17,10 @@ class ViewSubGraphTrace:
             legend=dict(orientation="h"),
             showlegend=True,
             dragmode="turntable",
+            xaxis=dict(rangeslider=dict(visible=True), type="date"),
         )
 
-    def getFig(self, plotData: GraphPlotDataModel) -> go.Figure:
+    def getFC(self, plotData: GraphPlotDataModel) -> go.Figure:
         fig = go.Figure()
 
         for traceData in plotData.traces:

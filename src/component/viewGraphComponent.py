@@ -1,5 +1,4 @@
 from typing import List
-from dash import dcc, html
 from dash.development.base_component import Component
 from component.draggableList import DraggableList
 from component.viewSubGraphTrace import ViewSubGraphTrace
@@ -12,11 +11,10 @@ class ViewGraphComponent:
         graphs = []
 
         for plotData in plotDatas:
-            graph = ViewSubGraphTrace().getFig(plotData)
+            graph = ViewSubGraphTrace().getFC(plotData)
             graphs.append(graph)
 
         return DraggableList().getFC(graphs)
-        # return html.Div(children=graphs)
 
 
 # 코드 돌아가는지 테스트용
