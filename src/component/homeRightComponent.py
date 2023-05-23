@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
-from dash import html
+from dash import dcc, html
 from dataStructure.researchData import ResearchDataFactory
 
 
@@ -27,7 +27,26 @@ class HomeRightComponent:
             graphComponent, style={"height": "94%", "overflow": "auto"}
         )
 
-        timelineContainer = html.Div("asdfasdf", style={"height": "6%"})
+        timeRangeSlider = dcc.RangeSlider(
+            id="time_slider",
+            min=0,
+            max=600,
+            marks=None,
+            value=[0, 600],
+            tooltip={
+                "placement": "bottom",
+                "always_visible": True,
+            },
+        )
+        timelineContainer = html.Div(
+            timeRangeSlider,
+            style={
+                "height": "6%",
+                "margin": "auto",
+                "padding": "30px",
+            },
+        )
+
         return html.Div(
             [graphContainer, timelineContainer],
             style={"height": "100%", "overflow": "hidden"},
