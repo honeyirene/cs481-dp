@@ -65,6 +65,7 @@ class InfoModal:
                     id="modal-body-scroll",
                     scrollable=True,
                     #centered=True,
+                    size="xl",
                     is_open=False,
                 ),
             ]
