@@ -16,7 +16,13 @@ class ViewVideoComponent:
 
         dash.get_app()
 
-        return html.Div(children=[video])
+        return html.Div(
+            children=[video],
+            style={
+                "width": "100%",
+                "height": "100%",
+            },
+        )
 
 
 # 코드 돌아가는지 테스트용
