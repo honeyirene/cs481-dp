@@ -11,32 +11,30 @@ class ViewIIDComponent:
     def getFC(self, IID: str, description: str) -> Component:
         return html.Div(
             children=[
-                html.Div(IID,
+                html.Div(
+                    IID,
                     style={
                         "height": "3%",
-                        "font-size": "24px",
+                        "fontSize": "24px",
                         # "margin-top": "12px",
-                        "margin-left": "12px",
-                        "margin-right": "12px",
+                        "marginLeft": "12px",
+                        "marginRight": "12px",
                         # "margin-bottom": "12px",
-                    }
+                    },
                 ),
-                html.Div(description,
-                         style={
-                             "font-size": "20px",
-                             "margin-left": "12px",
-                             "margin-right": "12px"
-
-                         }
-                        ),
+                html.Div(
+                    description,
+                    style={
+                        "fontSize": "20px",
+                        "marginLeft": "12px",
+                        "marginRight": "12px",
+                    },
+                ),
                 html.Br(),
                 html.Br(),
-                html.Div(infoModal,
-                         style={'textAlign':'center'})
+                html.Div(infoModal, style={"textAlign": "center"}),
             ]
         )
-
-
 
 
 # 코드 돌아가는지 테스트용
