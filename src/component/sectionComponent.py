@@ -103,7 +103,8 @@ class SectionComponent:
                 "height": "100%",
             }
             leftUpperStyle = {
-                "height": "auto",
+                # "height": "auto",
+                "aspectRatio": "16 / 9",
                 "backgroundColor": "white",
             }
             leftLowerStyle = {

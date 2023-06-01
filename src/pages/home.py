@@ -33,7 +33,7 @@ dash.register_page(
 
 title = TitleComponent().getFC("EmoViz", "white")
 
-leftUpper = ViewVideoComponent().getFC("assets", "p4_688.mp4")
+leftUpper = ViewVideoComponent().getFC()
 
 leftLower = ViewIIDComponent().getFC(
     "Participant 4",
