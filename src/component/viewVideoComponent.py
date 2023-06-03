@@ -9,7 +9,7 @@ class ViewVideoComponent:
     def getFC(self) -> Component:
         video = dp.DashPlayer(
             id="player",
-            url="https://youtu.be/yB5uNJt4y90",
+            url="https://www.youtube.com/watch?v=ZgbEBzqt_lY?feature=share",
             controls=True,
             width="100%",
             height="100%",
