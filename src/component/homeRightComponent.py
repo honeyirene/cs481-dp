@@ -31,11 +31,18 @@ class HomeRightComponent:
 
         @app.callback(
             [Output("graph" + d.title, "figure") for d in data],
-            [Input("time_slider", "value")],
+            [Input("time_slider", "value"),
+             Input("player", "currentTime"),],
         )
-        def update_plots(active_range):
+        def update_plots(active_range, currentTime):
             for fig in figs:
                 fig.update_layout(xaxis=dict(range=active_range))
+
+                if(type(currentTime) != type(None)):
+                    fig.update_layout(shapes=[
+                        dict(type="line", xref="paper", yref="paper", #TODO 여기 time 에 맞게 수정 필요
+                        x0=currentTime/690.0, x1=currentTime/690.0, y0=0, y1=1,line_width=1),]
+                    )
             return figs
 
         graphContainer = html.Div(
