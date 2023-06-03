@@ -1,4 +1,5 @@
-import datetime
+from datetime import time, datetime
+import numpy as np
 import dash
 import pandas as pd
 import plotly.graph_objects as go
@@ -6,6 +7,7 @@ from component.viewGraphComponent import ViewGraphComponent
 from dash import dcc, html
 from dash.dependencies import Input, Output
 from dataStructure.researchData import ResearchDataFactory
+import streamlit as st
 
 
 class HomeRightComponent:
@@ -61,6 +63,8 @@ class HomeRightComponent:
             graphComponent, style={"height": "94%", "overflow": "auto"}
         )
 
+
+
         timeRangeSlider = dcc.RangeSlider(
             id="time_slider",
             min=factory.plotData_acc.df["timestamp"][0],
@@ -72,20 +76,35 @@ class HomeRightComponent:
             ],
             tooltip={
                 "placement": "bottom",
-                "always_visible": False,
+                "always_visible": True,
             },
         )
+        # timeRangeSlider = st.slider(
+        #     label="time_slider",
+        #     min_value=factory.plotData_acc.df["timestamp"][0].item(),
+        #     max_value=factory.plotData_acc.df["timestamp"].iat[-1].item(),
+        #     #marks=None,
+        #     value=[
+        #         factory.plotData_acc.df["timestamp"][0].item(),
+        #         factory.plotData_acc.df["timestamp"].iat[-1].item(),
+        #     ],
+        #     # tooltip={
+        #     #     "placement": "bottom",
+        #     #     "always_visible": True,
+        #     # },
+        # )
+
         timelineContainer = html.Div(
             timeRangeSlider,
             style={
                 "height": "6%",
                 "margin": "auto",
-                "padding": "30px",
+                "padding": "50px",
             },
         )
 
         return html.Div(
-            [graphContainer, timelineContainer],
+            [timelineContainer, graphContainer],
             style={"height": "100%", "overflow": "hidden"},
         )
 
