@@ -96,10 +96,10 @@ class SectionComponent:
         print(value)
         if not value:
             leftStyle = {
-                "width": "35%",
+                "width": "25%",
             }
             rightStyle = {
-                "width": "64%",
+                "width": "74%",
                 "height": "100%",
             }
             leftUpperStyle = {
