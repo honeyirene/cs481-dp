@@ -13,6 +13,11 @@ class DraggableList:
         )
 
         return html.Div(
-            children,
-            id="drag-container",
+            [
+                html.Div(children, id="drag-container", style={"width": "100%"}),
+                html.Div(style={"width": "20px"}),
+            ],
+            style={
+                "display": "flex",
+            },
         )
