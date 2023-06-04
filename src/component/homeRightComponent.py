@@ -7,7 +7,7 @@ from component.viewGraphComponent import ViewGraphComponent
 from dash import dcc, html
 from dash.dependencies import Input, Output
 from dataStructure.researchData import ResearchDataFactory
-import streamlit as st
+#import streamlit as st
 
 
 class HomeRightComponent:
