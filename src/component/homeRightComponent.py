@@ -1,6 +1,4 @@
-import datetime
 import dash
-import pandas as pd
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
 from dash import dcc, html
@@ -72,20 +70,21 @@ class HomeRightComponent:
             ],
             tooltip={
                 "placement": "bottom",
-                "always_visible": False,
+                "always_visible": True,
             },
         )
+
         timelineContainer = html.Div(
             timeRangeSlider,
             style={
                 "height": "6%",
                 "margin": "auto",
-                "padding": "30px",
+                "padding": "50px",
             },
         )
 
         return html.Div(
-            [graphContainer, timelineContainer],
+            [timelineContainer, graphContainer],
             style={"height": "100%", "overflow": "hidden"},
         )
 
