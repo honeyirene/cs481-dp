@@ -15,62 +15,88 @@ class ResearchDataFactory:
         )
 
         E4_ACC = pd.read_csv("./dataset/e4_data/5/E4_ACC.csv")
-        E4_ACC['dt_timestamp'] = pd.to_datetime(E4_ACC['timestamp'], unit='ms')
+        E4_ACC["dt_timestamp"] = pd.to_datetime(E4_ACC["timestamp"], unit="ms")
         E4_BVP = pd.read_csv("./dataset/e4_data/5/E4_BVP.csv")
-        E4_BVP['dt_timestamp'] = pd.to_datetime(E4_BVP['timestamp'], unit='ms')
+        E4_BVP["dt_timestamp"] = pd.to_datetime(E4_BVP["timestamp"], unit="ms")
         E4_EDA = pd.read_csv("./dataset/e4_data/5/E4_EDA.csv")
-        E4_EDA['dt_timestamp'] = pd.to_datetime(E4_EDA['timestamp'], unit='ms')
+        E4_EDA["dt_timestamp"] = pd.to_datetime(E4_EDA["timestamp"], unit="ms")
         E4_HR = pd.read_csv("./dataset/e4_data/5/E4_HR.csv")
-        E4_HR['dt_timestamp'] = pd.to_datetime(E4_HR['timestamp'], unit='ms')
+        E4_HR["dt_timestamp"] = pd.to_datetime(E4_HR["timestamp"], unit="ms")
         E4_IBI = pd.read_csv("./dataset/e4_data/5/E4_IBI.csv")
-        E4_IBI['dt_timestamp'] = pd.to_datetime(E4_IBI['timestamp'], unit='ms')
+        E4_IBI["dt_timestamp"] = pd.to_datetime(E4_IBI["timestamp"], unit="ms")
         E4_TEMP = pd.read_csv("./dataset/e4_data/5/E4_TEMP.csv")
-        E4_TEMP['dt_timestamp'] = pd.to_datetime(E4_TEMP['timestamp'], unit='ms')
-        
+        E4_TEMP["dt_timestamp"] = pd.to_datetime(E4_TEMP["timestamp"], unit="ms")
+
         ATTENTION = pd.read_csv("./dataset/neurosky_polar_data/5/Attention.csv")
-        ATTENTION['dt_timestamp'] = pd.to_datetime(ATTENTION['timestamp'], unit='ms')
+        ATTENTION["dt_timestamp"] = pd.to_datetime(ATTENTION["timestamp"], unit="ms")
         BRAINWAVE = pd.read_csv("./dataset/neurosky_polar_data/5/BrainWave.csv")
-        BRAINWAVE['dt_timestamp'] = pd.to_datetime(BRAINWAVE['timestamp'], unit='ms')
+        BRAINWAVE["dt_timestamp"] = pd.to_datetime(BRAINWAVE["timestamp"], unit="ms")
         MEDITATION = pd.read_csv("./dataset/neurosky_polar_data/5/Meditation.csv")
-        MEDITATION['dt_timestamp'] = pd.to_datetime(MEDITATION['timestamp'], unit='ms')
+        MEDITATION["dt_timestamp"] = pd.to_datetime(MEDITATION["timestamp"], unit="ms")
         POLAR_HR = pd.read_csv("./dataset/neurosky_polar_data/5/Polar_HR.csv")
-        POLAR_HR['dt_timestamp'] = pd.to_datetime(POLAR_HR['timestamp'], unit='ms')
+        POLAR_HR["dt_timestamp"] = pd.to_datetime(POLAR_HR["timestamp"], unit="ms")
 
         min = POLAR_HR["dt_timestamp"].iat[0]
-        max = pd.to_datetime(POLAR_HR["timestamp"].iat[0] + 688000, unit='ms')
+        max = pd.to_datetime(POLAR_HR["timestamp"].iat[0] + 688000, unit="ms")
 
-        E4_ACC = E4_ACC.loc[(E4_ACC['dt_timestamp']>=min) & (E4_ACC['dt_timestamp']<=max)].reset_index(drop=False)
-        E4_BVP = E4_BVP.loc[(E4_BVP['dt_timestamp']>=min) & (E4_BVP['dt_timestamp']<=max)].reset_index(drop=False)
-        E4_EDA = E4_EDA.loc[(E4_EDA['dt_timestamp']>=min) & (E4_EDA['dt_timestamp']<=max)].reset_index(drop=False)
-        E4_HR = E4_HR.loc[(E4_HR['dt_timestamp']>=min) & (E4_HR['dt_timestamp']<=max)].reset_index(drop=False)
-        E4_IBI = E4_IBI.loc[(E4_IBI['dt_timestamp']>=min) & (E4_IBI['dt_timestamp']<=max)].reset_index(drop=False)
-        E4_TEMP = E4_TEMP.loc[(E4_TEMP['dt_timestamp']>=min) & (E4_TEMP['dt_timestamp']<=max)].reset_index(drop=False)
-        ATTENTION = ATTENTION.loc[(ATTENTION['dt_timestamp']>=min) & (ATTENTION['dt_timestamp']<=max)].reset_index(drop=False)
-        BRAINWAVE = BRAINWAVE.loc[(BRAINWAVE['dt_timestamp']>=min) & (BRAINWAVE['dt_timestamp']<=max)].reset_index(drop=False)
-        MEDITATION = MEDITATION.loc[(MEDITATION['dt_timestamp']>=min) & (MEDITATION['dt_timestamp']<=max)].reset_index(drop=False)
-        POLAR_HR = POLAR_HR.loc[(POLAR_HR['dt_timestamp']>=min) & (POLAR_HR['dt_timestamp']<=max)].reset_index(drop=False)
-        
+        E4_ACC = E4_ACC.loc[
+            (E4_ACC["dt_timestamp"] >= min) & (E4_ACC["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        E4_BVP = E4_BVP.loc[
+            (E4_BVP["dt_timestamp"] >= min) & (E4_BVP["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        E4_EDA = E4_EDA.loc[
+            (E4_EDA["dt_timestamp"] >= min) & (E4_EDA["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        E4_HR = E4_HR.loc[
+            (E4_HR["dt_timestamp"] >= min) & (E4_HR["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        E4_IBI = E4_IBI.loc[
+            (E4_IBI["dt_timestamp"] >= min) & (E4_IBI["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        E4_TEMP = E4_TEMP.loc[
+            (E4_TEMP["dt_timestamp"] >= min) & (E4_TEMP["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        ATTENTION = ATTENTION.loc[
+            (ATTENTION["dt_timestamp"] >= min) & (ATTENTION["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        BRAINWAVE = BRAINWAVE.loc[
+            (BRAINWAVE["dt_timestamp"] >= min) & (BRAINWAVE["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        MEDITATION = MEDITATION.loc[
+            (MEDITATION["dt_timestamp"] >= min) & (MEDITATION["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        POLAR_HR = POLAR_HR.loc[
+            (POLAR_HR["dt_timestamp"] >= min) & (POLAR_HR["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+
         basetimestamp = E4_ACC["timestamp"][0]
         EMO_ANN_EXTERNAL["timestamp"] = (
             EMO_ANN_EXTERNAL["seconds"]
             .astype(int)
             .apply(lambda x: x * 1000 + basetimestamp)
         )
-        EMO_ANN_EXTERNAL['dt_timestamp'] = pd.to_datetime(EMO_ANN_EXTERNAL['timestamp'], unit='ms')
+        EMO_ANN_EXTERNAL["dt_timestamp"] = pd.to_datetime(
+            EMO_ANN_EXTERNAL["timestamp"], unit="ms"
+        )
 
         EMO_ANN_PARTNER["timestamp"] = (
             EMO_ANN_PARTNER["seconds"]
             .astype(int)
             .apply(lambda x: x * 1000 + basetimestamp)
         )
-        EMO_ANN_PARTNER['dt_timestamp'] = pd.to_datetime(EMO_ANN_PARTNER['timestamp'], unit='ms')
+        EMO_ANN_PARTNER["dt_timestamp"] = pd.to_datetime(
+            EMO_ANN_PARTNER["timestamp"], unit="ms"
+        )
 
         EMO_ANN_SELF["timestamp"] = (
             EMO_ANN_SELF["seconds"]
             .astype(int)
             .apply(lambda x: x * 1000 + basetimestamp)
         )
-        EMO_ANN_SELF['dt_timestamp'] = pd.to_datetime(EMO_ANN_SELF['timestamp'], unit='ms')
+        EMO_ANN_SELF["dt_timestamp"] = pd.to_datetime(
+            EMO_ANN_SELF["timestamp"], unit="ms"
+        )
         # EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.loc[(EMO_ANN_EXTERNAL['dt_timestamp']>=min) & (EMO_ANN_EXTERNAL['dt_timestamp']<=max)].reset_index(drop=False)
         # EMO_ANN_PARTNER = EMO_ANN_PARTNER.loc[(EMO_ANN_PARTNER['dt_timestamp']>=min) & (EMO_ANN_PARTNER['dt_timestamp']<=max)].reset_index(drop=False)
         # EMO_ANN_SELF = EMO_ANN_SELF.loc[(EMO_ANN_SELF['dt_timestamp']>=min) & (EMO_ANN_SELF['dt_timestamp']<=max)].reset_index(drop=False)
@@ -86,11 +112,20 @@ class ResearchDataFactory:
         # BRAINWAVE = BRAINWAVE.loc[BRAINWAVE['dt_timestamp']<=max_]
         # MEDITATION = MEDITATION.loc[MEDITATION['dt_timestamp']<=max_]
         # POLAR_HR = POLAR_HR.loc[POLAR_HR['dt_timestamp']<=max_]
-        EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.loc[(EMO_ANN_EXTERNAL['dt_timestamp']>=min) & (EMO_ANN_EXTERNAL['dt_timestamp']<=max)].reset_index(drop=False)
-        EMO_ANN_PARTNER = EMO_ANN_PARTNER.loc[(EMO_ANN_PARTNER['dt_timestamp']>=min) & (EMO_ANN_PARTNER['dt_timestamp']<=max)].reset_index(drop=False)
-        EMO_ANN_SELF = EMO_ANN_SELF.loc[(EMO_ANN_SELF['dt_timestamp']>=min) & (EMO_ANN_SELF['dt_timestamp']<=max)].reset_index(drop=False)
+        EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.loc[
+            (EMO_ANN_EXTERNAL["dt_timestamp"] >= min)
+            & (EMO_ANN_EXTERNAL["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        EMO_ANN_PARTNER = EMO_ANN_PARTNER.loc[
+            (EMO_ANN_PARTNER["dt_timestamp"] >= min)
+            & (EMO_ANN_PARTNER["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
+        EMO_ANN_SELF = EMO_ANN_SELF.loc[
+            (EMO_ANN_SELF["dt_timestamp"] >= min)
+            & (EMO_ANN_SELF["dt_timestamp"] <= max)
+        ].reset_index(drop=False)
 
-        #E4_ACC['ms_timestamp'] = pd.to_datetime(E4_ACC['timestamp']).dt.strftime("%M:%S")
+        # E4_ACC['ms_timestamp'] = pd.to_datetime(E4_ACC['timestamp']).dt.strftime("%M:%S")
         traceData_acc_x = GraphTraceDataModel("timestamp", "x", "x axis")
         traceData_acc_y = GraphTraceDataModel("timestamp", "y", "y axis")
         traceData_acc_z = GraphTraceDataModel("timestamp", "z", "z axis")
