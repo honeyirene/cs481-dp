@@ -37,16 +37,21 @@ class HomeRightComponent:
         def update_plots(active_range, currentTime):
             for fig in figs:
                 fig.update_layout(xaxis=dict(range=active_range))
-                videoEntireTime = 690.0 # 비디오의 전체 시간(초)
-                if type(currentTime) != type(None):
+
+            if type(currentTime) != type(None):
+                videoEntireTime = 630.0  # 비디오의 전체 시간(초)
+                currentX = currentTime / videoEntireTime
+                for fig in figs:
                     fig.update_layout(
                         shapes=[
                             dict(
                                 type="line",
                                 xref="paper",
-                                yref="paper",  # TODO 여기 time 에 맞게 수정 필요
-                                x0=currentTime / videoEntireTime, # 비디오의 현재 백분율 이후 이부분 수정 필요 
-                                x1=currentTime / videoEntireTime,
+                                # TODO 여기 time 에 맞게 수정 필요
+                                yref="paper",
+                                # 비디오의 현재 백분율 이후 이부분 수정 필요
+                                x0=currentX,
+                                x1=currentX,
                                 y0=0,
                                 y1=1,
                                 line_width=1,

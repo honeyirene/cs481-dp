@@ -1,8 +1,3 @@
-#########################################
-### <view page>
-### mainly managed by Minhyeok Seo.
-#########################################
-
 import dash
 from component.homeRightComponent import HomeRightComponent
 from component.titleComponent import TitleComponent

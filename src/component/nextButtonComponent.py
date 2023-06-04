@@ -8,11 +8,9 @@ class nextButtonComponent:
         pages = dash.page_registry.values()
         for page in pages:
             print(page["path"])
-            if page["name"] ==pageName:
+            if page["name"] == pageName:
                 return page["path"]
         print("wrong page name")
 
-    def getFC(self, title, pageLink)-> Component:
-        return dbc.Button(
-            title,
-            href= pageLink )
+    def getFC(self, title, pageLink) -> Component:
+        return dbc.Button(title, href=pageLink)
