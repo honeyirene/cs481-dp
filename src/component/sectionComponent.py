@@ -10,7 +10,7 @@ class SectionComponent:
             children=[
                 title,
             ],
-            style={"width": "95%"},
+            style={"width": "90%"},
         )
         changePortionButton = html.Div(
             daq.ToggleSwitch(
