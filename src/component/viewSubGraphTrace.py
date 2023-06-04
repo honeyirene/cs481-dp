@@ -41,7 +41,7 @@ class ViewSubGraphTrace:
                 dcc.Graph(
                     id="graph" + str(plotData.title),
                     figure=fig,
-                    style={"flexGrow": "1"},
+                    style={"width": "100%"},
                 ),
                 info,
             ],
