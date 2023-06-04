@@ -93,7 +93,6 @@ class SectionComponent:
         Input("input", "value"),
     )
     def changePortion(value):
-        print(value)
         if not value:
             leftStyle = {
                 "width": "25%",
