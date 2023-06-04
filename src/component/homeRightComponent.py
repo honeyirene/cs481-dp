@@ -33,9 +33,13 @@ class HomeRightComponent:
             Input("time_slider", "value"),
         )
         def update_plots(values):
-            rangeMin = values[0]
+            rangeMinSec = values[0]
             currentSec = values[1]
-            rangeMax = values[2]
+            rangeMaxSec = values[2]
+
+            basetime = 1548206261000
+            rangeMin = basetime + rangeMinSec * 1000
+            rangeMax = basetime + rangeMaxSec * 1000
             for fig in figs:
                 fig.update_layout(xaxis=dict(range=[rangeMin, rangeMax]))
 
