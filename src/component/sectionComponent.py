@@ -1,16 +1,23 @@
 import dash_daq as daq
 from dash import html, callback, Input, Output
 from dash.development.base_component import Component
+from component.titleModal import TitleModal
 
 
 class SectionComponent:
     def __upperBar(self, title) -> Component:
+        modal = TitleModal().getFC()
         upperLeft = html.Div(
             id="upper-left-empty",
             children=[
                 title,
+                modal,
             ],
-            style={"width": "90%"},
+            style={
+                "width": "90%",
+                "display": "flex",
+                "alignItems": "center",
+            },
         )
         changePortionButton = html.Div(
             daq.ToggleSwitch(
