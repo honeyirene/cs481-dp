@@ -1,12 +1,12 @@
 import plotly.graph_objects as go
-from dash import dcc
+from dash import dcc, html
 from dash.development.base_component import Component
 from plotly.basedatatypes import BaseTraceType
 from models.graphDataModel import GraphPlotDataModel
+from component.valueModal import ValueModal
 from typing import Tuple
 
 
-# QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 class ViewSubGraphTrace:
     def __addTrace(self, fig: go.Figure, trace: BaseTraceType):
         fig.add_trace(trace)
@@ -35,7 +35,22 @@ class ViewSubGraphTrace:
 
         self.__updateLayout(fig, plotData.title)
 
-        graph = dcc.Graph(id="graph" + str(plotData.title), figure=fig, style=dict())
+        info = ValueModal().getFC(plotData.title)
+        graph = html.Div(
+            [
+                dcc.Graph(
+                    id="graph" + str(plotData.title),
+                    figure=fig,
+                    style={"flexGrow": "1"},
+                ),
+                info,
+            ],
+            style={
+                "width": "100%",
+                "display": "flex",
+                "alignItem": "center",
+            },
+        )
 
         return fig, graph
 
