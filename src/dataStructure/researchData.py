@@ -1,21 +1,22 @@
+import numpy as np
 import pandas as pd
 from models.graphDataModel import GraphPlotDataModel, GraphTraceDataModel
-import numpy as np
+
 
 class ResearchDataFactory:
     def __init__(self):
         EMO_ANN_EXTERNAL = pd.read_csv(
             "./dataset/emotion_annotations/aggregated_external_annotations/P5.external.csv"
         )
-        EMO_ANN_EXTERNAL=EMO_ANN_EXTERNAL.replace({np.nan: 0, 'x':1})
+        EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.replace({np.nan: 0, "x": 1})
         EMO_ANN_PARTNER = pd.read_csv(
             "./dataset/emotion_annotations/partner_annotations/P5.partner.csv"
         )
-        EMO_ANN_PARTNER=EMO_ANN_PARTNER.replace({np.nan: 0, 'x':1})
+        EMO_ANN_PARTNER = EMO_ANN_PARTNER.replace({np.nan: 0, "x": 1})
         EMO_ANN_SELF = pd.read_csv(
             "./dataset/emotion_annotations/self_annotations/P5.self.csv"
         )
-        EMO_ANN_SELF=EMO_ANN_SELF.replace({np.nan: 0, 'x':1})
+        EMO_ANN_SELF = EMO_ANN_SELF.replace({np.nan: 0, "x": 1})
 
         E4_ACC = pd.read_csv("./dataset/e4_data/5/E4_ACC.csv")
         E4_ACC["dt_timestamp"] = pd.to_datetime(E4_ACC["timestamp"], unit="ms")
@@ -133,7 +134,9 @@ class ResearchDataFactory:
         traceData_acc_y = GraphTraceDataModel("timestamp", "y", "y axis")
         traceData_acc_z = GraphTraceDataModel("timestamp", "z", "z axis")
         self.plotData_acc = GraphPlotDataModel(
-            "3 axis acceleration (g)", E4_ACC, [traceData_acc_x, traceData_acc_y, traceData_acc_z]
+            "3 axis acceleration (g)",
+            E4_ACC,
+            [traceData_acc_x, traceData_acc_y, traceData_acc_z],
         )
 
         traceData_bvp = GraphTraceDataModel("timestamp", "value", "BVP")
@@ -249,10 +252,7 @@ class ResearchDataFactory:
         self.plotData_emo_ann_ext_av = GraphPlotDataModel(
             "arousal & valence (ext)",
             EMO_ANN_EXTERNAL,
-            [
-                traceData_ext_arousal,
-                traceData_ext_valence
-            ],
+            [traceData_ext_arousal, traceData_ext_valence],
         )
 
         self.plotData_emo_ann_ext_stress = GraphPlotDataModel(
@@ -263,7 +263,7 @@ class ResearchDataFactory:
                 traceData_ext_happy,
                 traceData_ext_angry,
                 traceData_ext_nervous,
-                traceData_ext_sad
+                traceData_ext_sad,
             ],
         )
 
@@ -277,7 +277,7 @@ class ResearchDataFactory:
                 traceData_ext_concentration,
                 traceData_ext_frustration,
                 traceData_ext_surprise,
-                traceData_ext_none_1
+                traceData_ext_none_1,
             ],
         )
 
@@ -342,10 +342,7 @@ class ResearchDataFactory:
         self.plotData_emo_ann_pnr_av = GraphPlotDataModel(
             "arousal & valence (pnr)",
             EMO_ANN_PARTNER,
-            [
-                traceData_pnr_arousal,
-                traceData_pnr_valence
-            ],
+            [traceData_pnr_arousal, traceData_pnr_valence],
         )
 
         self.plotData_emo_ann_pnr_stress = GraphPlotDataModel(
@@ -356,7 +353,7 @@ class ResearchDataFactory:
                 traceData_pnr_happy,
                 traceData_pnr_angry,
                 traceData_pnr_nervous,
-                traceData_pnr_sad
+                traceData_pnr_sad,
             ],
         )
 
@@ -370,7 +367,7 @@ class ResearchDataFactory:
                 traceData_pnr_concentration,
                 traceData_pnr_frustration,
                 traceData_pnr_surprise,
-                traceData_pnr_none_1
+                traceData_pnr_none_1,
             ],
         )
 
@@ -435,10 +432,7 @@ class ResearchDataFactory:
         self.plotData_emo_ann_self_av = GraphPlotDataModel(
             "arousal & valence (self)",
             EMO_ANN_SELF,
-            [
-                traceData_self_arousal,
-                traceData_self_valence
-            ],
+            [traceData_self_arousal, traceData_self_valence],
         )
 
         self.plotData_emo_ann_self_stress = GraphPlotDataModel(
@@ -449,7 +443,7 @@ class ResearchDataFactory:
                 traceData_self_happy,
                 traceData_self_angry,
                 traceData_self_nervous,
-                traceData_self_sad
+                traceData_self_sad,
             ],
         )
 
@@ -463,7 +457,7 @@ class ResearchDataFactory:
                 traceData_self_concentration,
                 traceData_self_frustration,
                 traceData_self_surprise,
-                traceData_self_none_1
+                traceData_self_none_1,
             ],
         )
 
@@ -487,4 +481,3 @@ class ResearchDataFactory:
 if __name__ == "__main__":
     # view.run_server(debug=True)
     print("skip")
-
