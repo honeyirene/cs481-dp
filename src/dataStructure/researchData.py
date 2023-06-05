@@ -7,12 +7,15 @@ class ResearchDataFactory:
         EMO_ANN_EXTERNAL = pd.read_csv(
             "./dataset/emotion_annotations/aggregated_external_annotations/P5.external.csv"
         )
+        EMO_ANN_EXTERNAL=EMO_ANN_EXTERNAL.replace({np.nan: 0, 'x':1})
         EMO_ANN_PARTNER = pd.read_csv(
             "./dataset/emotion_annotations/partner_annotations/P5.partner.csv"
         )
+        EMO_ANN_PARTNER=EMO_ANN_PARTNER.replace({np.nan: 0, 'x':1})
         EMO_ANN_SELF = pd.read_csv(
             "./dataset/emotion_annotations/self_annotations/P5.self.csv"
         )
+        EMO_ANN_SELF=EMO_ANN_SELF.replace({np.nan: 0, 'x':1})
 
         E4_ACC = pd.read_csv("./dataset/e4_data/5/E4_ACC.csv")
         E4_ACC["dt_timestamp"] = pd.to_datetime(E4_ACC["timestamp"], unit="ms")
