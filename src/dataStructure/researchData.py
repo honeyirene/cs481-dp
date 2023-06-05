@@ -130,14 +130,14 @@ class ResearchDataFactory:
         traceData_acc_y = GraphTraceDataModel("timestamp", "y", "y axis")
         traceData_acc_z = GraphTraceDataModel("timestamp", "z", "z axis")
         self.plotData_acc = GraphPlotDataModel(
-            "g", E4_ACC, [traceData_acc_x, traceData_acc_y, traceData_acc_z]
+            "3 axis acceleration (g)", E4_ACC, [traceData_acc_x, traceData_acc_y, traceData_acc_z]
         )
 
         traceData_bvp = GraphTraceDataModel("timestamp", "value", "BVP")
-        self.plotData_bvp = GraphPlotDataModel("PPG", E4_BVP, [traceData_bvp])
+        self.plotData_bvp = GraphPlotDataModel("BVP (PPG)", E4_BVP, [traceData_bvp])
 
         traceData_eda = GraphTraceDataModel("timestamp", "value", "EDA")
-        self.plotData_eda = GraphPlotDataModel("uS", E4_EDA, [traceData_eda])
+        self.plotData_eda = GraphPlotDataModel("EDA (uS)", E4_EDA, [traceData_eda])
 
         HR_DF = E4_HR.copy()
         HR_DF["e4"] = E4_HR["value"]
@@ -153,7 +153,7 @@ class ResearchDataFactory:
 
         traceData_temp = GraphTraceDataModel("timestamp", "value", "℃")
         self.plotData_temp = GraphPlotDataModel(
-            "Temperature", E4_TEMP, [traceData_temp]
+            "Temperature (℃)", E4_TEMP, [traceData_temp]
         )
 
         traceData_bw_high_alpha = GraphTraceDataModel(
