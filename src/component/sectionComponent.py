@@ -36,7 +36,7 @@ class SectionComponent:
                 upperLeft,
                 changePortionButton,
             ],
-            style={"display": "flex", "height": "8%", "background-color": "#59c3ff"},
+            style={"display": "flex", "height": "8%", "backgroundColor": "#59c3ff"},
         )
 
     def __mainContainer(
