@@ -52,8 +52,8 @@ class HomeRightComponent:
             for fig in figs:
                 fig.update_layout(xaxis=dict(range=[rangeMin, rangeMax]))
 
-            videoEntireTime = 630.0  # 비디오의 전체 시간(초)
-            currentX = currentSec / videoEntireTime
+            rangeSize = rangeMaxSec - rangeMinSec
+            currentX = (currentSec - rangeMinSec) / rangeSize
             for fig in figs:
                 fig.update_layout(
                     shapes=[
