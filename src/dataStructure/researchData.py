@@ -1,6 +1,6 @@
 import pandas as pd
 from models.graphDataModel import GraphPlotDataModel, GraphTraceDataModel
-
+import numpy as np
 
 class ResearchDataFactory:
     def __init__(self):
