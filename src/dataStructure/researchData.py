@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from models.graphDataModel import GraphPlotDataModel, GraphTraceDataModel
 
@@ -7,12 +8,15 @@ class ResearchDataFactory:
         EMO_ANN_EXTERNAL = pd.read_csv(
             "./dataset/emotion_annotations/aggregated_external_annotations/P5.external.csv"
         )
+        EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.replace({np.nan: 0, "x": 1})
         EMO_ANN_PARTNER = pd.read_csv(
             "./dataset/emotion_annotations/partner_annotations/P5.partner.csv"
         )
+        EMO_ANN_PARTNER = EMO_ANN_PARTNER.replace({np.nan: 0, "x": 1})
         EMO_ANN_SELF = pd.read_csv(
             "./dataset/emotion_annotations/self_annotations/P5.self.csv"
         )
+        EMO_ANN_SELF = EMO_ANN_SELF.replace({np.nan: 0, "x": 1})
 
         E4_ACC = pd.read_csv("./dataset/e4_data/5/E4_ACC.csv")
         E4_ACC["dt_timestamp"] = pd.to_datetime(E4_ACC["timestamp"], unit="ms")
@@ -130,14 +134,16 @@ class ResearchDataFactory:
         traceData_acc_y = GraphTraceDataModel("timestamp", "y", "y axis")
         traceData_acc_z = GraphTraceDataModel("timestamp", "z", "z axis")
         self.plotData_acc = GraphPlotDataModel(
-            "g", E4_ACC, [traceData_acc_x, traceData_acc_y, traceData_acc_z]
+            "3 axis acceleration (g)",
+            E4_ACC,
+            [traceData_acc_x, traceData_acc_y, traceData_acc_z],
         )
 
         traceData_bvp = GraphTraceDataModel("timestamp", "value", "BVP")
-        self.plotData_bvp = GraphPlotDataModel("PPG", E4_BVP, [traceData_bvp])
+        self.plotData_bvp = GraphPlotDataModel("BVP (PPG)", E4_BVP, [traceData_bvp])
 
         traceData_eda = GraphTraceDataModel("timestamp", "value", "EDA")
-        self.plotData_eda = GraphPlotDataModel("uS", E4_EDA, [traceData_eda])
+        self.plotData_eda = GraphPlotDataModel("EDA (uS)", E4_EDA, [traceData_eda])
 
         HR_DF = E4_HR.copy()
         HR_DF["e4"] = E4_HR["value"]
@@ -153,7 +159,7 @@ class ResearchDataFactory:
 
         traceData_temp = GraphTraceDataModel("timestamp", "value", "℃")
         self.plotData_temp = GraphPlotDataModel(
-            "Temperature", E4_TEMP, [traceData_temp]
+            "Temperature (℃)", E4_TEMP, [traceData_temp]
         )
 
         traceData_bw_high_alpha = GraphTraceDataModel(
@@ -243,17 +249,28 @@ class ResearchDataFactory:
             "timestamp", "none_2", "less commonly used BROMP none"
         )
 
-        self.plotData_emo_ann_ext = GraphPlotDataModel(
-            "external emotion annotation",
+        self.plotData_emo_ann_ext_av = GraphPlotDataModel(
+            "arousal & valence (ext)",
+            EMO_ANN_EXTERNAL,
+            [traceData_ext_arousal, traceData_ext_valence],
+        )
+
+        self.plotData_emo_ann_ext_stress = GraphPlotDataModel(
+            "stress (ext)",
             EMO_ANN_EXTERNAL,
             [
-                traceData_ext_arousal,
-                traceData_ext_valence,
                 traceData_ext_cheerful,
                 traceData_ext_happy,
                 traceData_ext_angry,
                 traceData_ext_nervous,
                 traceData_ext_sad,
+            ],
+        )
+
+        self.plotData_emo_ann_ext_cBROMP = GraphPlotDataModel(
+            "educational 1 (e)",
+            EMO_ANN_EXTERNAL,
+            [
                 traceData_ext_boredom,
                 traceData_ext_confusion,
                 traceData_ext_delight,
@@ -261,6 +278,13 @@ class ResearchDataFactory:
                 traceData_ext_frustration,
                 traceData_ext_surprise,
                 traceData_ext_none_1,
+            ],
+        )
+
+        self.plotData_emo_ann_ext_lcBROMP = GraphPlotDataModel(
+            "educational 2 (e)",
+            EMO_ANN_EXTERNAL,
+            [
                 traceData_ext_confrustion,
                 traceData_ext_contempt,
                 traceData_ext_dejection,
@@ -315,17 +339,28 @@ class ResearchDataFactory:
             "timestamp", "none_2", "less commonly used BROMP none"
         )
 
-        self.plotData_emo_ann_pnr = GraphPlotDataModel(
-            "partner emotion annotation",
+        self.plotData_emo_ann_pnr_av = GraphPlotDataModel(
+            "arousal & valence (pnr)",
+            EMO_ANN_PARTNER,
+            [traceData_pnr_arousal, traceData_pnr_valence],
+        )
+
+        self.plotData_emo_ann_pnr_stress = GraphPlotDataModel(
+            "stress (pnr)",
             EMO_ANN_PARTNER,
             [
-                traceData_pnr_arousal,
-                traceData_pnr_valence,
                 traceData_pnr_cheerful,
                 traceData_pnr_happy,
                 traceData_pnr_angry,
                 traceData_pnr_nervous,
                 traceData_pnr_sad,
+            ],
+        )
+
+        self.plotData_emo_ann_pnr_cBROMP = GraphPlotDataModel(
+            "educational 1 (p)",
+            EMO_ANN_PARTNER,
+            [
                 traceData_pnr_boredom,
                 traceData_pnr_confusion,
                 traceData_pnr_delight,
@@ -333,6 +368,13 @@ class ResearchDataFactory:
                 traceData_pnr_frustration,
                 traceData_pnr_surprise,
                 traceData_pnr_none_1,
+            ],
+        )
+
+        self.plotData_emo_ann_pnr_lcBROMP = GraphPlotDataModel(
+            "educational 2 (p)",
+            EMO_ANN_PARTNER,
+            [
                 traceData_pnr_confrustion,
                 traceData_pnr_contempt,
                 traceData_pnr_dejection,
@@ -387,17 +429,28 @@ class ResearchDataFactory:
             "timestamp", "none_2", "less commonly used BROMP none"
         )
 
-        self.plotData_emo_ann_self = GraphPlotDataModel(
-            "self emotion annotation",
+        self.plotData_emo_ann_self_av = GraphPlotDataModel(
+            "arousal & valence (self)",
+            EMO_ANN_SELF,
+            [traceData_self_arousal, traceData_self_valence],
+        )
+
+        self.plotData_emo_ann_self_stress = GraphPlotDataModel(
+            "stress (self)",
             EMO_ANN_SELF,
             [
-                traceData_self_arousal,
-                traceData_self_valence,
                 traceData_self_cheerful,
                 traceData_self_happy,
                 traceData_self_angry,
                 traceData_self_nervous,
                 traceData_self_sad,
+            ],
+        )
+
+        self.plotData_emo_ann_self_cBROMP = GraphPlotDataModel(
+            "educational 1 (s)",
+            EMO_ANN_SELF,
+            [
                 traceData_self_boredom,
                 traceData_self_confusion,
                 traceData_self_delight,
@@ -405,6 +458,13 @@ class ResearchDataFactory:
                 traceData_self_frustration,
                 traceData_self_surprise,
                 traceData_self_none_1,
+            ],
+        )
+
+        self.plotData_emo_ann_self_lcBROMP = GraphPlotDataModel(
+            "educational 2 (s)",
+            EMO_ANN_SELF,
+            [
                 traceData_self_confrustion,
                 traceData_self_contempt,
                 traceData_self_dejection,

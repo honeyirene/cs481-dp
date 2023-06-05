@@ -11,9 +11,18 @@ class HomeRightComponent:
     def getFC(self) -> go.Figure:
         factory = ResearchDataFactory()
         data = [
-            factory.plotData_emo_ann_ext,
-            factory.plotData_emo_ann_pnr,
-            factory.plotData_emo_ann_self,
+            factory.plotData_emo_ann_ext_av,
+            factory.plotData_emo_ann_ext_stress,
+            factory.plotData_emo_ann_ext_cBROMP,
+            factory.plotData_emo_ann_ext_lcBROMP,
+            factory.plotData_emo_ann_pnr_av,
+            factory.plotData_emo_ann_pnr_stress,
+            factory.plotData_emo_ann_pnr_cBROMP,
+            factory.plotData_emo_ann_pnr_lcBROMP,
+            factory.plotData_emo_ann_self_av,
+            factory.plotData_emo_ann_self_stress,
+            factory.plotData_emo_ann_self_cBROMP,
+            factory.plotData_emo_ann_self_lcBROMP,
             factory.plotData_acc,
             factory.plotData_bvp,
             factory.plotData_eda,
