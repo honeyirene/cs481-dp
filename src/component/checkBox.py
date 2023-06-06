@@ -138,16 +138,3 @@ class CheckBox:
                 ),
             ]
         )
-
-    @callback(
-        Output("my-checklist", "value"),
-        [
-            Input("emotion annotation", "value"),
-            Input("sensor data", "value"),
-            Input("all-or-none", "value"),
-        ],
-    )
-    def toggle_modal(all_selected, options):
-        all_or_none = []
-        all_or_none = [option["value"] for option in options if all_selected]
-        return all_or_none
