@@ -42,7 +42,7 @@ class ViewSubGraphTrace:
             html.Div(
                 [
                     dcc.Graph(
-                        id="graph" + str(plotData.title),
+                        id="graph" + str(plotData.id.value),
                         figure=fig,
                         style={"width": "100%"},
                     ),
@@ -54,7 +54,7 @@ class ViewSubGraphTrace:
                     "alignItem": "center",
                 },
             ),
-            id="collapse-" + str(plotData.title),
+            id="collapse-" + str(plotData.id.value),
             is_open=False,
         )
 

@@ -68,49 +68,52 @@ class ValueModal:
     TENDENCY_DESC19 = "relative power TENDENCY"
     TENDENCY_DESC20 = "attention & meditation TENDENCY"
 
-    tendencyDesc = {KEY1:TENDENCY_DESC1,
-        KEY2:TENDENCY_DESC2,
-        KEY3:TENDENCY_DESC3,
-        KEY4:TENDENCY_DESC4,
-        KEY5:TENDENCY_DESC5,
-        KEY6:TENDENCY_DESC6,
-        KEY7:TENDENCY_DESC6,
-        KEY8:TENDENCY_DESC8,
-        KEY9:TENDENCY_DESC9,
-        KEY10:TENDENCY_DESC10,
-        KEY11:TENDENCY_DESC11,
-        KEY12:TENDENCY_DESC12,
-        KEY13:TENDENCY_DESC13,
-        KEY14:TENDENCY_DESC14,
-        KEY15:TENDENCY_DESC15,
-        KEY16:TENDENCY_DESC16,
-        KEY17:TENDENCY_DESC17,
-        KEY18:TENDENCY_DESC18,
-        KEY19:TENDENCY_DESC19,
-        KEY20:TENDENCY_DESC20,
+    tendencyDesc = {
+        KEY1: TENDENCY_DESC1,
+        KEY2: TENDENCY_DESC2,
+        KEY3: TENDENCY_DESC3,
+        KEY4: TENDENCY_DESC4,
+        KEY5: TENDENCY_DESC5,
+        KEY6: TENDENCY_DESC6,
+        KEY7: TENDENCY_DESC6,
+        KEY8: TENDENCY_DESC8,
+        KEY9: TENDENCY_DESC9,
+        KEY10: TENDENCY_DESC10,
+        KEY11: TENDENCY_DESC11,
+        KEY12: TENDENCY_DESC12,
+        KEY13: TENDENCY_DESC13,
+        KEY14: TENDENCY_DESC14,
+        KEY15: TENDENCY_DESC15,
+        KEY16: TENDENCY_DESC16,
+        KEY17: TENDENCY_DESC17,
+        KEY18: TENDENCY_DESC18,
+        KEY19: TENDENCY_DESC19,
+        KEY20: TENDENCY_DESC20,
     }
 
-    infoDesc = {KEY1:INFO_DESC1,
-        KEY2:INFO_DESC2,
-        KEY3:INFO_DESC3,
-        KEY4:INFO_DESC4,
-        KEY5:INFO_DESC5,
-        KEY6:INFO_DESC6,
-        KEY7:INFO_DESC7,
-        KEY8:INFO_DESC8,
-        KEY9:INFO_DESC9,
-        KEY10:INFO_DESC10,
-        KEY11:INFO_DESC11,
-        KEY12:INFO_DESC12,
-        KEY13:INFO_DESC13,
-        KEY14:INFO_DESC14,
-        KEY15:INFO_DESC15,
-        KEY16:INFO_DESC16,
-        KEY17:INFO_DESC17,
-        KEY18:INFO_DESC18,
-        KEY19:INFO_DESC19,
-        KEY20:INFO_DESC20,
+    infoDesc = {
+        KEY1: INFO_DESC1,
+        KEY2: INFO_DESC2,
+        KEY3: INFO_DESC3,
+        KEY4: INFO_DESC4,
+        KEY5: INFO_DESC5,
+        KEY6: INFO_DESC6,
+        KEY7: INFO_DESC7,
+        KEY8: INFO_DESC8,
+        KEY9: INFO_DESC9,
+        KEY10: INFO_DESC10,
+        KEY11: INFO_DESC11,
+        KEY12: INFO_DESC12,
+        KEY13: INFO_DESC13,
+        KEY14: INFO_DESC14,
+        KEY15: INFO_DESC15,
+        KEY16: INFO_DESC16,
+        KEY17: INFO_DESC17,
+        KEY18: INFO_DESC18,
+        KEY19: INFO_DESC19,
+        KEY20: INFO_DESC20,
     }
+
     def getFC(self, id: str) -> Component:
         app = dash.get_app()
 
@@ -126,7 +129,7 @@ class ValueModal:
             if n1 or n2:
                 return not is_open
             return is_open
-        
+
         info = "key missing"
         if str(id) in self.infoDesc:
             info = self.infoDesc[str(id)]
@@ -134,7 +137,6 @@ class ValueModal:
         tendency = "key missing"
         if str(id) in self.tendencyDesc:
             tendency = self.tendencyDesc[str(id)]
-
 
         return html.Div(
             [

@@ -38,7 +38,7 @@ class HomeRightComponent:
         app = dash.get_app()
 
         @app.callback(
-            [Output("graph" + d.title, "figure") for d in data],
+            [Output("graph" + str(d.id.value), "figure") for d in data],
             Input("time_slider", "value"),
         )
         def update_plots(values):

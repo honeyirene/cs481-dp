@@ -19,11 +19,14 @@ class ViewGraphComponent:
         app = dash.get_app()
 
         @app.callback(
-            [Output("collapse-" + plotData.title, "is_open") for plotData in plotDatas],
+            [
+                Output("collapse-" + str(plotData.id.value), "is_open")
+                for plotData in plotDatas
+            ],
             Input("emotion-annotation", "value"),
         )
         def onoff(value):
-            return [plotData.title not in value for plotData in plotDatas]
+            return [plotData.id.value in value for plotData in plotDatas]
 
         for plotData in plotDatas:
             fig, graph = ViewSubGraphTrace().getFigAndFC(plotData)

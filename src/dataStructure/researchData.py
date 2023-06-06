@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from models.graphDataModel import GraphPlotDataModel, GraphTraceDataModel
+from dataStructure.researchDataType import ResearchDataType
 
 
 class ResearchDataFactory:
@@ -101,21 +102,6 @@ class ResearchDataFactory:
         EMO_ANN_SELF["dt_timestamp"] = pd.to_datetime(
             EMO_ANN_SELF["timestamp"], unit="ms"
         )
-        # EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.loc[(EMO_ANN_EXTERNAL['dt_timestamp']>=min) & (EMO_ANN_EXTERNAL['dt_timestamp']<=max)].reset_index(drop=False)
-        # EMO_ANN_PARTNER = EMO_ANN_PARTNER.loc[(EMO_ANN_PARTNER['dt_timestamp']>=min) & (EMO_ANN_PARTNER['dt_timestamp']<=max)].reset_index(drop=False)
-        # EMO_ANN_SELF = EMO_ANN_SELF.loc[(EMO_ANN_SELF['dt_timestamp']>=min) & (EMO_ANN_SELF['dt_timestamp']<=max)].reset_index(drop=False)
-
-        # max_ = EMO_ANN_EXTERNAL["dt_timestamp"].iat[-1]
-        # E4_ACC = E4_ACC.loc[E4_ACC['dt_timestamp']<=max_]
-        # E4_BVP = E4_BVP.loc[E4_BVP['dt_timestamp']<=max_]
-        # E4_EDA = E4_EDA.loc[E4_EDA['dt_timestamp']<=max_]
-        # E4_HR = E4_HR.loc[E4_HR['dt_timestamp']<=max_]
-        # E4_IBI = E4_IBI.loc[E4_IBI['dt_timestamp']<=max_]
-        # E4_TEMP = E4_TEMP.loc[E4_TEMP['dt_timestamp']<=max_]
-        # ATTENTION = ATTENTION.loc[ATTENTION['dt_timestamp']<=max_]
-        # BRAINWAVE = BRAINWAVE.loc[BRAINWAVE['dt_timestamp']<=max_]
-        # MEDITATION = MEDITATION.loc[MEDITATION['dt_timestamp']<=max_]
-        # POLAR_HR = POLAR_HR.loc[POLAR_HR['dt_timestamp']<=max_]
         EMO_ANN_EXTERNAL = EMO_ANN_EXTERNAL.loc[
             (EMO_ANN_EXTERNAL["dt_timestamp"] >= min)
             & (EMO_ANN_EXTERNAL["dt_timestamp"] <= max)
@@ -135,15 +121,20 @@ class ResearchDataFactory:
         traceData_acc_z = GraphTraceDataModel("timestamp", "z", "z axis")
         self.plotData_acc = GraphPlotDataModel(
             "3 axis acceleration (g)",
+            ResearchDataType.ACC,
             E4_ACC,
             [traceData_acc_x, traceData_acc_y, traceData_acc_z],
         )
 
         traceData_bvp = GraphTraceDataModel("timestamp", "value", "BVP")
-        self.plotData_bvp = GraphPlotDataModel("BVP (PPG)", E4_BVP, [traceData_bvp])
+        self.plotData_bvp = GraphPlotDataModel(
+            "BVP (PPG)", ResearchDataType.BVP, E4_BVP, [traceData_bvp]
+        )
 
         traceData_eda = GraphTraceDataModel("timestamp", "value", "EDA")
-        self.plotData_eda = GraphPlotDataModel("EDA (uS)", E4_EDA, [traceData_eda])
+        self.plotData_eda = GraphPlotDataModel(
+            "EDA (uS)", ResearchDataType.EDA, E4_EDA, [traceData_eda]
+        )
 
         HR_DF = E4_HR.copy()
         HR_DF["e4"] = E4_HR["value"]
@@ -151,15 +142,20 @@ class ResearchDataFactory:
         traceData_hr_e4 = GraphTraceDataModel("timestamp", "e4", "E4")
         traceData_hr_ecg = GraphTraceDataModel("timestamp", "ecg", "ECG")
         self.plotData_hr = GraphPlotDataModel(
-            "Heart Rate", HR_DF, [traceData_hr_e4, traceData_hr_ecg]
+            "Heart Rate",
+            ResearchDataType.HEARTRATE,
+            HR_DF,
+            [traceData_hr_e4, traceData_hr_ecg],
         )
 
         traceData_ibi = GraphTraceDataModel("timestamp", "value", "IBI")
-        self.plotData_ibi = GraphPlotDataModel("IBI", E4_IBI, [traceData_ibi])
+        self.plotData_ibi = GraphPlotDataModel(
+            "IBI", ResearchDataType.IBI, E4_IBI, [traceData_ibi]
+        )
 
         traceData_temp = GraphTraceDataModel("timestamp", "value", "℃")
         self.plotData_temp = GraphPlotDataModel(
-            "Temperature (℃)", E4_TEMP, [traceData_temp]
+            "Temperature (℃)", ResearchDataType.TEMPERATURE, E4_TEMP, [traceData_temp]
         )
 
         traceData_bw_high_alpha = GraphTraceDataModel(
@@ -184,6 +180,7 @@ class ResearchDataFactory:
         traceData_bw_theta = GraphTraceDataModel("timestamp", "theta", "theta")
         self.plotData_bw = GraphPlotDataModel(
             "Brainwave (relative power)",
+            ResearchDataType.BRAINWAVE,
             BRAINWAVE,
             [
                 traceData_bw_high_alpha,
@@ -203,7 +200,10 @@ class ResearchDataFactory:
         traceData_att = GraphTraceDataModel("timestamp", "at", "attention")
         traceData_med = GraphTraceDataModel("timestamp", "me", "meditation")
         self.plotData_etc = GraphPlotDataModel(
-            "attention & meditation", ATME_DF, [traceData_att, traceData_med]
+            "attention & meditation",
+            ResearchDataType.ATTENTION_AND_MEDITATION,
+            ATME_DF,
+            [traceData_att, traceData_med],
         )
 
         traceData_ext_arousal = GraphTraceDataModel("timestamp", "arousal", "arousal")
@@ -251,12 +251,14 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_ext_av = GraphPlotDataModel(
             "arousal & valence (ext)",
+            ResearchDataType.AROUSAL_AND_VALENCE_EXT,
             EMO_ANN_EXTERNAL,
             [traceData_ext_arousal, traceData_ext_valence],
         )
 
         self.plotData_emo_ann_ext_stress = GraphPlotDataModel(
             "stress (ext)",
+            ResearchDataType.STRESS_EXT,
             EMO_ANN_EXTERNAL,
             [
                 traceData_ext_cheerful,
@@ -269,6 +271,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_ext_cBROMP = GraphPlotDataModel(
             "educational 1 (e)",
+            ResearchDataType.C_BROMP_EXT,
             EMO_ANN_EXTERNAL,
             [
                 traceData_ext_boredom,
@@ -283,6 +286,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_ext_lcBROMP = GraphPlotDataModel(
             "educational 2 (e)",
+            ResearchDataType.LC_BROMP_EXT,
             EMO_ANN_EXTERNAL,
             [
                 traceData_ext_confrustion,
@@ -341,12 +345,14 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_pnr_av = GraphPlotDataModel(
             "arousal & valence (pnr)",
+            ResearchDataType.AROUSAL_AND_VALENCE_PNR,
             EMO_ANN_PARTNER,
             [traceData_pnr_arousal, traceData_pnr_valence],
         )
 
         self.plotData_emo_ann_pnr_stress = GraphPlotDataModel(
             "stress (pnr)",
+            ResearchDataType.STRESS_PNR,
             EMO_ANN_PARTNER,
             [
                 traceData_pnr_cheerful,
@@ -359,6 +365,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_pnr_cBROMP = GraphPlotDataModel(
             "educational 1 (p)",
+            ResearchDataType.C_BROMP_PNR,
             EMO_ANN_PARTNER,
             [
                 traceData_pnr_boredom,
@@ -373,6 +380,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_pnr_lcBROMP = GraphPlotDataModel(
             "educational 2 (p)",
+            ResearchDataType.LC_BROMP_PNR,
             EMO_ANN_PARTNER,
             [
                 traceData_pnr_confrustion,
@@ -431,12 +439,14 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_self_av = GraphPlotDataModel(
             "arousal & valence (self)",
+            ResearchDataType.AROUSAL_AND_VALENCE_SELF,
             EMO_ANN_SELF,
             [traceData_self_arousal, traceData_self_valence],
         )
 
         self.plotData_emo_ann_self_stress = GraphPlotDataModel(
             "stress (self)",
+            ResearchDataType.STRESS_SELF,
             EMO_ANN_SELF,
             [
                 traceData_self_cheerful,
@@ -449,6 +459,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_self_cBROMP = GraphPlotDataModel(
             "educational 1 (s)",
+            ResearchDataType.C_BROMP_SELF,
             EMO_ANN_SELF,
             [
                 traceData_self_boredom,
@@ -463,6 +474,7 @@ class ResearchDataFactory:
 
         self.plotData_emo_ann_self_lcBROMP = GraphPlotDataModel(
             "educational 2 (s)",
+            ResearchDataType.LC_BROMP_SELF,
             EMO_ANN_SELF,
             [
                 traceData_self_confrustion,
