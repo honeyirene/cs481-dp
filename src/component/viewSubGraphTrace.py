@@ -1,4 +1,5 @@
 import plotly.graph_objects as go
+import dash_bootstrap_components as dbc
 from dash import dcc, html
 from dash.development.base_component import Component
 from plotly.basedatatypes import BaseTraceType
@@ -37,20 +38,24 @@ class ViewSubGraphTrace:
         self.__updateLayout(fig, plotData.title)
 
         info = ValueModal().getFC(plotData.title)
-        graph = html.Div(
-            [
-                dcc.Graph(
-                    id="graph" + str(plotData.title),
-                    figure=fig,
-                    style={"width": "100%"},
-                ),
-                info,
-            ],
-            style={
-                "width": "100%",
-                "display": "flex",
-                "alignItem": "center",
-            },
+        graph = dbc.Collapse(
+            html.Div(
+                [
+                    dcc.Graph(
+                        id="graph" + str(plotData.title),
+                        figure=fig,
+                        style={"width": "100%"},
+                    ),
+                    info,
+                ],
+                style={
+                    "width": "100%",
+                    "display": "flex",
+                    "alignItem": "center",
+                },
+            ),
+            id="collapse-" + str(plotData.title),
+            is_open=False,
         )
 
         return fig, graph

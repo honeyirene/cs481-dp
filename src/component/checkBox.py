@@ -1,7 +1,6 @@
-from dash import html, callback, Input, Output, State
-from dash.development.base_component import Component
 import dash_bootstrap_components as dbc
-from dash import dcc
+from dash import dcc, html
+from dash.development.base_component import Component
 
 
 class CheckBox:
@@ -22,7 +21,7 @@ class CheckBox:
                                 [
                                     html.B("Emotion Annotation"),
                                     dcc.Checklist(
-                                        id="emotion annotation",
+                                        id="emotion-annotation",
                                         options=[
                                             {
                                                 "label": "Arousal & Valence (ext)",
@@ -96,7 +95,7 @@ class CheckBox:
                                 [
                                     html.B("Sensor Data"),
                                     dcc.Checklist(
-                                        id="sensor data",
+                                        id="sensor-data",
                                         options=[
                                             {
                                                 "label": "3 axis acceleration",
