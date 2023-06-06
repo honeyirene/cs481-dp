@@ -3,7 +3,7 @@ import dash
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
 from dash import dcc, html
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output, State, ClientsideFunction
 from dataStructure.researchData import ResearchDataFactory
 
 
@@ -37,96 +37,16 @@ class HomeRightComponent:
         figs, graphComponent = ViewGraphComponent().getFC(data)
         app = dash.get_app()
 
-        @app.callback(
+        app.clientside_callback(
+            ClientsideFunction(namespace="clientside", function_name="updateGraphs"),
             [Output("graph" + str(d.id.value), "figure") for d in data],
             Input("time_slider", "value"),
+            [State("graph" + str(d.id.value), "figure") for d in data],
         )
-        def update_plots(values):
-            rangeMinSec = values[0]
-            currentSec = values[1]
-            rangeMaxSec = values[2]
-
-            rangeSize = rangeMaxSec - rangeMinSec
-
-            for fig in figs:
-                if rangeSize < 300:
-                    fig.update_layout(
-                        xaxis=dict(
-                            range=[rangeMinSec, rangeMaxSec],
-                            tickmode="array",
-                            tickvals=[i * 30 for i in range(22)],
-                            ticktext=[
-                                "00:00",
-                                "00:30",
-                                "01:00",
-                                "01:30",
-                                "02:00",
-                                "02:30",
-                                "03:00",
-                                "03:30",
-                                "04:00",
-                                "04:30",
-                                "05:00",
-                                "05:30",
-                                "06:00",
-                                "06:30",
-                                "07:00",
-                                "07:30",
-                                "08:00",
-                                "08:30",
-                                "09:00",
-                                "09:30",
-                                "10:00",
-                                "10:30",
-                            ],
-                        )
-                    )
-                else:
-                    fig.update_layout(
-                        xaxis=dict(
-                            range=[rangeMinSec, rangeMaxSec],
-                            tickmode="array",
-                            tickvals=[i * 60 for i in range(11)],
-                            ticktext=[
-                                "00:00",
-                                "01:00",
-                                "02:00",
-                                "03:00",
-                                "04:00",
-                                "05:00",
-                                "06:00",
-                                "07:00",
-                                "08:00",
-                                "09:00",
-                                "10:00",
-                            ],
-                        )
-                    )
-
-            currentX = (currentSec - rangeMinSec) / rangeSize
-            for fig in figs:
-                fig.update_layout(
-                    shapes=[
-                        dict(
-                            type="line",
-                            xref="paper",
-                            # TODO 여기 time 에 맞게 수정 필요
-                            yref="paper",
-                            # 비디오의 현재 백분율 이후 이부분 수정 필요
-                            x0=currentX,
-                            x1=currentX,
-                            y0=0,
-                            y1=1,
-                            line_width=1,
-                        ),
-                    ]
-                )
-            return figs
 
         app.clientside_callback(
             """
             function (time, value) {
-                console.log(time);
                 const currTime = Math.floor(time ?? 0);
                 const result = [value[0], currTime, value[2]];
                 return result;
@@ -175,6 +95,7 @@ class HomeRightComponent:
                 "always_visible": False,
             },
             allowCross=False,
+            updatemode="drag",
         )
 
         timelineContainer = html.Div(

@@ -20,6 +20,18 @@ class ViewSubGraphTrace:
             legend=dict(orientation="h"),
             showlegend=True,
             dragmode="turntable",
+            shapes=[
+                dict(
+                    type="line",
+                    xref="paper",
+                    yref="paper",
+                    x0=0,
+                    x1=0,
+                    y0=0,
+                    y1=1,
+                    line_width=1,
+                ),
+            ],
         )
 
     def getFigAndFC(self, plotData: GraphPlotDataModel) -> Tuple[go.Figure, Component]:
