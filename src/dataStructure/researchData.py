@@ -183,7 +183,7 @@ class ResearchDataFactory:
         traceData_bw_delta = GraphTraceDataModel("timestamp", "delta", "delta")
         traceData_bw_theta = GraphTraceDataModel("timestamp", "theta", "theta")
         self.plotData_bw = GraphPlotDataModel(
-            "relative power",
+            "Brainwave (relative power)",
             BRAINWAVE,
             [
                 traceData_bw_high_alpha,

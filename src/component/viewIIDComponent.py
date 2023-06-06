@@ -1,14 +1,13 @@
 from dash import html
 from dash.development.base_component import Component
-from component.InfoModal import InfoModal
-import dash_bootstrap_components as dbc
-
-infoModal = InfoModal().getFC()
+from component.checkBox import CheckBox
 
 
 # QualityControl 페이지의 왼쪽 Distribution 그래프 하나.
 class ViewIIDComponent:
     def getFC(self, IID: str, description: str) -> Component:
+        checkBox = CheckBox().getFC()
+
         return html.Div(
             children=[
                 html.Div(
@@ -32,7 +31,7 @@ class ViewIIDComponent:
                 ),
                 html.Br(),
                 html.Br(),
-                html.Div(infoModal, style={"textAlign": "center"}),
+                html.Div(checkBox, style={"textAlign": "center"}),
             ]
         )
 
