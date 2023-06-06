@@ -33,7 +33,7 @@ class HomeRightComponent:
             # factory.plotData_audio,
         ]
 
-        figs, graphComponent = ViewGraphComponent().getFC(data)
+        graphComponent = ViewGraphComponent().getFC(data)
         app = dash.get_app()
 
         app.clientside_callback(
