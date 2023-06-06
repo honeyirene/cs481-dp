@@ -43,19 +43,23 @@ class TitleModal:
                                     html.Div(
                                         [
                                             html.H4("Introduce"),
-                                            html.P("TODO:"),
+                                            html.P("Emo-Viz is a tool that helps researchers handle multi-modal data at once."),
                                         ]
                                     ),
                                     html.Div(
                                         [
                                             html.H4("Purpose"),
-                                            html.P("TODO:"),
+                                            html.P("Tracking your K-emocon Data with our tool. We provide simple views for catching trendency of multi-modal data."),
                                         ]
                                     ),
                                     html.Div(
                                         [
                                             html.H4("How to use"),
-                                            html.P("TODO:"),
+                                            html.P(" - The graph shows when the current video is running."),
+                                            html.P(" - You can change the ratio between graph and video with the toggle on the top."),
+                                            html.P(" - You can change the order of the graphs by dragging them."),
+                                            html.P(" - You can check the information by pressing the 'i' and 'information' button."),
+                                            
                                         ]
                                     ),
                                 ]
