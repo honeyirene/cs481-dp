@@ -31,8 +31,8 @@ title = TitleComponent().getFC("EmoViz", "white")
 leftUpper = ViewVideoComponent().getFC()
 
 leftLower = ViewIIDComponent().getFC(
-    "Participant 4",
-    "gender: male, age: 25." + "\n" + "\n" + "All participants were students at KAIST.",
+    "Participant 5",
+    "gender: male, age: 22." + "\n" + "\n" + "All participants were students at KAIST.",
 )
 
 right = HomeRightComponent().getFC()
