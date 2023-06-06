@@ -3,7 +3,7 @@ import dash
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
 from dash import dcc, html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from dataStructure.researchData import ResearchDataFactory
 
 
@@ -123,15 +123,19 @@ class HomeRightComponent:
                 )
             return figs
 
-        @app.callback(
-            [Output("time_slider", "value")],
+        app.clientside_callback(
+            """
+            function (time, value) {
+                console.log(time);
+                const currTime = Math.floor(time ?? 0);
+                const result = [value[0], currTime, value[2]];
+                return result;
+            }
+            """,
+            Output("time_slider", "value"),
             Input("player", "currentTime"),
-            Input("time_slider", "value"),
+            State("time_slider", "value"),
         )
-        def sync(time, value):
-            currTime = math.floor(0 if type(time) == type(None) else time)
-            result = [value[0], currTime, value[2]]
-            return [result]
 
         graphContainer = html.Div(
             graphComponent, style={"height": "85%", "overflow": "auto"}
