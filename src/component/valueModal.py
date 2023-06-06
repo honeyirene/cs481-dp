@@ -26,7 +26,7 @@ class ValueModal:
     KEY19 = "relative power"
     KEY20 = "attention & meditation"
 
-    INFO_DESC1 = "arousal & valence (ext) info"
+    INFO_DESC1 = "The value of arousal and valence feelings among the emotions felt by the external observer."
     INFO_DESC2 = "stress (ext) info"
     INFO_DESC3 = "educational 1 (e) info"
     INFO_DESC4 = "educational 2 (e) info"
@@ -47,7 +47,7 @@ class ValueModal:
     INFO_DESC19 = "relative power info"
     INFO_DESC20 = "attention & meditation info"
 
-    TENDENCY_DESC1 = "arousal & valence (ext) TENDENCY"
+    TENDENCY_DESC1 = "If the balance value is low, it is unpleasant, if it is high, it is pleasant, if the arousal value is low, it is calm, and if it is high, it is excited."
     TENDENCY_DESC2 = "stress (ext) TENDENCY"
     TENDENCY_DESC3 = "educational 1 (e) TENDENCY"
     TENDENCY_DESC4 = "educational 2 (e) TENDENCY"
@@ -158,13 +158,13 @@ class ValueModal:
                                     html.Div(
                                         [
                                             html.H4("Information"),
-                                            html.P("TODO:" + info),
+                                            html.P(info),
                                         ]
                                     ),
                                     html.Div(
                                         [
                                             html.H4("Common Tendency Analysis"),
-                                            html.P("TODO:" + tendency),
+                                            html.P(tendency),
                                         ]
                                     ),
                                 ]
