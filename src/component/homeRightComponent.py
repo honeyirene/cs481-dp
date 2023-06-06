@@ -1,4 +1,3 @@
-import math
 import dash
 import plotly.graph_objects as go
 from component.viewGraphComponent import ViewGraphComponent
