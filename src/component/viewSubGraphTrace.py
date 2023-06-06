@@ -22,11 +22,12 @@ class ViewSubGraphTrace:
         )
 
     def getFigAndFC(self, plotData: GraphPlotDataModel) -> Tuple[go.Figure, Component]:
+        basetime = 1548206261000
         fig = go.Figure()
 
         for traceData in plotData.traces:
             gobj = go.Scatter(
-                x=plotData.df[traceData.xname],
+                x=plotData.df[traceData.xname].apply(lambda x: (x - basetime) / 1000),
                 y=plotData.df[traceData.yname],
                 name=traceData.displayName,
                 mode="lines",

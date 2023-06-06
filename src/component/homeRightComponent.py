@@ -46,13 +46,63 @@ class HomeRightComponent:
             currentSec = values[1]
             rangeMaxSec = values[2]
 
-            basetime = 1548206261000
-            rangeMin = basetime + rangeMinSec * 1000
-            rangeMax = basetime + rangeMaxSec * 1000
-            for fig in figs:
-                fig.update_layout(xaxis=dict(range=[rangeMin, rangeMax]))
-
             rangeSize = rangeMaxSec - rangeMinSec
+
+            for fig in figs:
+                if rangeSize < 300:
+                    fig.update_layout(
+                        xaxis=dict(
+                            range=[rangeMinSec, rangeMaxSec],
+                            tickmode="array",
+                            tickvals=[i * 30 for i in range(22)],
+                            ticktext=[
+                                "00:00",
+                                "00:30",
+                                "01:00",
+                                "01:30",
+                                "02:00",
+                                "02:30",
+                                "03:00",
+                                "03:30",
+                                "04:00",
+                                "04:30",
+                                "05:00",
+                                "05:30",
+                                "06:00",
+                                "06:30",
+                                "07:00",
+                                "07:30",
+                                "08:00",
+                                "08:30",
+                                "09:00",
+                                "09:30",
+                                "10:00",
+                                "10:30",
+                            ],
+                        )
+                    )
+                else:
+                    fig.update_layout(
+                        xaxis=dict(
+                            range=[rangeMinSec, rangeMaxSec],
+                            tickmode="array",
+                            tickvals=[i * 60 for i in range(11)],
+                            ticktext=[
+                                "00:00",
+                                "01:00",
+                                "02:00",
+                                "03:00",
+                                "04:00",
+                                "05:00",
+                                "06:00",
+                                "07:00",
+                                "08:00",
+                                "09:00",
+                                "10:00",
+                            ],
+                        )
+                    )
+
             currentX = (currentSec - rangeMinSec) / rangeSize
             for fig in figs:
                 fig.update_layout(
