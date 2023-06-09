@@ -44,8 +44,8 @@ class ValueModal:
     INFO_DESC16 = "Heart rate is capture from both Empatica E4 Wristband and Polar H7 Bluetooth Heart Rate Sensor. Sampling rate is 1Hz from BVP and 1HZ from ECG"
     INFO_DESC17 = "Interbeat interval(IBI) is the time interval between individual beats of the mammalian heart. "
     INFO_DESC18 = "Body tempterature of participants captured by Empatica E4 Wristband. Sampling rate is 4Hz and Signal range is from -40℃ to 115℃"
-    INFO_DESC19 = "relative power info"
-    INFO_DESC20 = "attention & meditation info"
+    INFO_DESC19 = "The relative strength of brainwaves in each frequency band measured by the NeuroSky. Sampling rate is 125Hz."
+    INFO_DESC20 = "Degree of attention & meditation by participant captured by NeuroSky. Sampling rate is 1Hz"
 
     TENDENCY_DESC1 = "1: very low - 2: low - 3: neutral- 4: high - 5: very high for each value. If the balance value is low, it is unpleasant, if it is high, it is pleasant, if the arousal value is low, it is calm, and if it is high, it is excited."
     TENDENCY_DESC2 = "1: very low - 2: low - 3: high- 4: very high for each value"
@@ -65,8 +65,8 @@ class ValueModal:
     TENDENCY_DESC16 = "mean and standard deviation for each sampling"
     TENDENCY_DESC17 = "mean inter-beat interval from BVP"
     TENDENCY_DESC18 = "There tendency to be a tendency for more comfortable discussions when body temperature is lower"
-    TENDENCY_DESC19 = "relative power TENDENCY"
-    TENDENCY_DESC20 = "attention & meditation TENDENCY"
+    TENDENCY_DESC19 = "Delta waves(0.5Hz~2.75Hz): Delta waves have a relative low strength and are primarily associated with deep sleep and the brain's restorative processes. Theta wavesa (3.5~6.75Hz): Theta waves have a moderate strength and are commonly observed during dreaming or meditative states. low-Alpha(7.5~9.25Hz) & high-Alpha(10~11.75Hz) waves: Alpha waves have a moderate strength and are typically present when the brain is in a relaxed state or during closed-eye meditation. low-Beta (13~16.75Hz)& high-Beta(18~29.75Hz) waves: Beta waves have a relatively high strength and are associated with cognitive activity, focused attention, and alertness. low-Gamma(31~39.75Hz) & high-Gamma(41~49.75Hz) waves: Gamma waves have a relatively high strength and are primarily linked to cognitive processing, problem-solving, learning, and concentration."
+    TENDENCY_DESC20 = "Attention value means s eSense Attention ranging from 1 to 100, representing how attentive a user was at a given moment. Attention values can be interpreted as the following: 1 to 20 - “strongly lowered”, 20 to 40 - “reduced”, 40 to 60 - “neutral”, 60 to 80 - “slightly elevated”, and 80 to 100 - “elevated”. 0 indicates that the device was unable to calculate a sufciently reliable value, possibly due to a signal contamination with noises. Meditation means  eSense Meditation ranging from 0 to 100, measuring the relaxedness of a user. For their interpretation, use the same ranges and the meanings as those for the attention values."
 
     tendencyDesc = {
         KEY1: TENDENCY_DESC1,
